@@ -1,0 +1,35 @@
+{
+ "model": "tgn_wikipedia_s2_rho0.95_lam10",
+ "epochs": 5,
+ "mse": 0.0662,
+ "memory_variance": 0.1242,
+ "explained_variance": 0.46698872785829315,
+ "history": [
+  {
+   "epoch": 1,
+   "mse": 0.0833,
+   "variance": 0.1242
+  },
+  {
+   "epoch": 2,
+   "mse": 0.0717,
+   "variance": 0.1242
+  },
+  {
+   "epoch": 3,
+   "mse": 0.0685,
+   "variance": 0.1242
+  },
+  {
+   "epoch": 4,
+   "mse": 0.067,
+   "variance": 0.1242
+  },
+  {
+   "epoch": 5,
+   "mse": 0.0662,
+   "variance": 0.1242
+  }
+ ],
+ "source_log": "011_train_restarter_data_wikipedia_model_tgn_wikipedia_s2_rho0.95_lam10_epochs_5_threads_2.log"
+}

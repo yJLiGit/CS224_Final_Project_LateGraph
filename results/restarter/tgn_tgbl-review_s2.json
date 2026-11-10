@@ -1,0 +1,7 @@
+{
+ "model": "tgn_tgbl-review_s2",
+ "epochs": 5,
+ "mse": 0.0395,
+ "memory_variance": 0.4398,
+ "explained_variance": 0.9101864483856299
+}

@@ -1,0 +1,7 @@
+{
+ "model": "tgn_lastfm_s1",
+ "epochs": 5,
+ "mse": 0.0087,
+ "memory_variance": 0.7155,
+ "explained_variance": 0.9878406708595387
+}

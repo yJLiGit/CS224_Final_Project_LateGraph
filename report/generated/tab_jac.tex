@@ -1,0 +1,20 @@
+\begin{table}[!htb]
+\centering\scriptsize
+\caption{Spectral norms of the memory update's Jacobians on every test update (median over updates; mean $\pm$ std over
+models). Certified: updates with $\|J_{\text{own}}\|+\|J_{\text{partner}}\|<1$.}
+\label{tab:jac}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+ & models & $\|J_{\text{own}}\|$ & $\|J_{\text{partner}}\|$ & sum & certified (\%) \\
+\midrule
+Wikipedia & 5 & 1.11\,{\scriptsize$\pm$0.03} & 0.92\,{\scriptsize$\pm$0.03} & 2.04\,{\scriptsize$\pm$0.06} & 0.0\,{\scriptsize$\pm$0.0} \\
+Reddit & 5 & 1.23\,{\scriptsize$\pm$0.01} & 0.73\,{\scriptsize$\pm$0.01} & 1.97\,{\scriptsize$\pm$0.02} & 0.0\,{\scriptsize$\pm$0.0} \\
+MOOC & 5 & 1.22\,{\scriptsize$\pm$0.08} & 0.66\,{\scriptsize$\pm$0.11} & 1.89\,{\scriptsize$\pm$0.20} & 0.0\,{\scriptsize$\pm$0.0} \\
+LastFM & 3 & 1.12\,{\scriptsize$\pm$0.07} & 0.58\,{\scriptsize$\pm$0.06} & 1.71\,{\scriptsize$\pm$0.12} & 0.0\,{\scriptsize$\pm$0.0} \\
+SEC Form 4 & 5 & 1.10\,{\scriptsize$\pm$0.03} & 1.16\,{\scriptsize$\pm$0.05} & 2.26\,{\scriptsize$\pm$0.07} & 0.0\,{\scriptsize$\pm$0.0} \\
+Wikipedia, memory-only & 5 & 1.16\,{\scriptsize$\pm$0.03} & 0.75\,{\scriptsize$\pm$0.03} & 1.91\,{\scriptsize$\pm$0.04} & 0.0\,{\scriptsize$\pm$0.0} \\
+Wikipedia, JODIE & 3 & 1.33\,{\scriptsize$\pm$0.02} & 0.94\,{\scriptsize$\pm$0.04} & 2.27\,{\scriptsize$\pm$0.03} & 0.0\,{\scriptsize$\pm$0.0} \\
+\bottomrule
+\end{tabular}
+\end{table}

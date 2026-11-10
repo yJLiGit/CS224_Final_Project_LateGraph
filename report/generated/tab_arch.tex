@@ -1,0 +1,20 @@
+\begin{table}[!htb]
+\centering\scriptsize
+\caption{Memory models on Wikipedia (mean $\pm$ std over seeds). Test MRR: oracle policy of the streaming evaluation
+($^\dagger$DyRep: in-order test MRR with 100 random negatives). Cone: median share of the updates since an edit that exact
+repair recomputes. Leak: LiRA AUC on the link score (query access) after a log-only deletion (0.5 = nothing left).}
+\label{tab:arch}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+ & val.\ AP & test MRR & cone & leak after log-only deletion \\
+\midrule
+TGN (GRU memory, attention) & 0.965\,{\scriptsize$\pm$0.002} & 0.643\,{\scriptsize$\pm$0.018} & 0.02\% & 0.84\,{\scriptsize$\pm$0.01} \\
+memory-only TGN & 0.950\,{\scriptsize$\pm$0.002} & 0.532\,{\scriptsize$\pm$0.036} & -- & 0.89\,{\scriptsize$\pm$0.01} \\
+JODIE (RNN memory, time projection) & 0.957\,{\scriptsize$\pm$0.003} & 0.536\,{\scriptsize$\pm$0.026} & 0.03\% & 0.88\,{\scriptsize$\pm$0.01} \\
+DyRep (RNN memory, reads the partner's neighbourhood) & 0.945\,{\scriptsize$\pm$0.009} & 0.528\,{\scriptsize$\pm$0.141}$^\dagger$ & 14.75\% & 0.75\,{\scriptsize$\pm$0.02} \\
+TGN with the contractive cell ($\rho\le0.9$) & 0.939\,{\scriptsize$\pm$0.002} & 0.580\,{\scriptsize$\pm$0.016} & 0.03\% & 0.80\,{\scriptsize$\pm$0.01} \\
+memory-free control (attention only) & 0.843\,{\scriptsize$\pm$0.001} & 0.414\,{\scriptsize$\pm$0.003} & -- & exact by design \\
+\bottomrule
+\end{tabular}
+\end{table}

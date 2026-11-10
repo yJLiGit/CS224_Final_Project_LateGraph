@@ -1,0 +1,45 @@
+{
+ "config": {
+  "data": "mooc",
+  "model": "dyrep_mooc_s1",
+  "seed": 1,
+  "trials": 300,
+  "K": 1000,
+  "shadows": 16,
+  "threads": 2
+ },
+ "val_ap": 0.8143297384862452,
+ "mrr": 0.11249347031116486,
+ "exactness": {
+  "trials": 300,
+  "max_abs_diff": 1.341104507446289e-06,
+  "cone_frac_median": 0.8971540890318657,
+  "cone_frac_mean": 0.7590330627810844,
+  "cone_zero_frac": 0.06,
+  "speedup_median": 1.0638840394532743
+ },
+ "deletion": {
+  "pairs_A": 1000,
+  "pairs_B": 1000,
+  "shadows": 16,
+  "methods": {
+   "none": {
+    "logit": 0.501741,
+    "probe": 0.495556
+   },
+   "store": {
+    "logit": 0.4972500000000001,
+    "probe": 0.4957475,
+    "lira_logit": 0.589507,
+    "lira_cosine": 0.6720659999999998
+   },
+   "exact": {
+    "logit": 0.500115,
+    "probe": 0.49289099999999997,
+    "lira_logit": 0.48262099999999997,
+    "lira_cosine": 0.5056999999999999
+   }
+  }
+ },
+ "wall_sec": 116.33377385139465
+}

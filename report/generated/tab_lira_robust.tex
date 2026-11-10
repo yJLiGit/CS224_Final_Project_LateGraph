@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering\scriptsize
+\caption{The leak under other query-access attackers: LiRA AUC on the link score after log-only deletion (del.) and after
+resetting the memories (reset), mean over seeds. The attacker's shadow streams leave out the other test-period events it does
+not know; or it attacks 20 or 50 steps after the request; or fewer candidate pairs are unknown at once ($K$; at most 1{,}000
+per group by default, 338 on Wikipedia). With partial knowledge and the default $K$, $\varepsilon$-repair, the 1-hop rebuild and
+exact repair stay at or below \PartialApproxMax{}; the other rows expose them (Table~\ref{tab:liraknow}). With $K=25$ the AUCs are
+noisy: exact repair, which leaks nothing, ranges from \ExactKTwentyFiveMin{} to \ExactKTwentyFiveMax.}
+\label{tab:robust}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lcccccccccc@{}}
+\toprule
+attacker & \multicolumn{2}{c}{Wikipedia} & \multicolumn{2}{c}{Reddit} & \multicolumn{2}{c}{MOOC} & \multicolumn{2}{c}{LastFM} & \multicolumn{2}{c}{tgbl-review} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
+ & del. & reset & del. & reset & del. & reset & del. & reset & del. & reset \\
+\midrule
+full knowledge, at the request & 0.84 & 0.82 & 0.86 & 0.83 & 0.63 & 0.75 & 0.62 & 0.69 & 0.97 & 1.00 \\
+knows 50\% of the other events & 0.70 & 0.74 & 0.65 & 0.77 & 0.53 & 0.73 & 0.51 & 0.66 & 0.57 & 0.97 \\
+knows 10\% & 0.65 & 0.67 & 0.61 & 0.73 & 0.50 & 0.72 & 0.51 & 0.64 & 0.53 & 0.97 \\
+knows none of them & 0.63 & 0.63 & 0.59 & 0.73 & 0.50 & 0.70 & 0.52 & 0.63 & 0.52 & 0.97 \\
+20 steps after the request & 0.84 & 0.81 & 0.87 & 0.85 & 0.65 & 0.72 & 0.65 & 0.67 & 0.97 & 1.00 \\
+50 steps after & 0.83 & 0.82 & 0.87 & 0.86 & 0.65 & 0.72 & 0.66 & 0.68 & 0.97 & 1.00 \\
+$K=100$ candidate pairs & 0.92 & 0.89 & 0.97 & 0.95 & 0.75 & 0.97 & 0.85 & 0.94 & -- & -- \\
+$K=25$ & 0.97 & 0.95 & 0.98 & 0.98 & 0.84 & 1.00 & 0.91 & 0.99 & -- & -- \\
+$K=25$, knows 50\% & 0.67 & 0.78 & 0.61 & 0.91 & -- & -- & -- & -- & -- & -- \\
+$K=25$, knows none & 0.63 & 0.65 & 0.59 & 0.80 & -- & -- & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}

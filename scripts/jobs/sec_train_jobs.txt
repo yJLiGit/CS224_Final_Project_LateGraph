@@ -1,0 +1,3 @@
+scripts/train_tgn.py --data sec --seed 0 --epochs 10 --threads 3
+scripts/train_tgn.py --data sec --seed 1 --epochs 10 --threads 3
+scripts/train_tgn.py --data sec --seed 2 --epochs 10 --threads 3

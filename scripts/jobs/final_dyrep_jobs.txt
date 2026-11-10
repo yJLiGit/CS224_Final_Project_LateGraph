@@ -1,0 +1,23 @@
+# DyRep-style memory (neighbourhood reads): training, then its experiments
+scripts/train_dyrep.py --data wikipedia --seed 0 --threads 3
+scripts/train_dyrep.py --data wikipedia --seed 1 --threads 3
+scripts/train_dyrep.py --data wikipedia --seed 2 --threads 3
+scripts/train_dyrep.py --data wikipedia --seed 3 --threads 3
+scripts/train_dyrep.py --data wikipedia --seed 4 --threads 3
+scripts/train_dyrep.py --data mooc --seed 0 --threads 3
+scripts/train_dyrep.py --data mooc --seed 1 --threads 3
+scripts/train_dyrep.py --data mooc --seed 2 --threads 3
+scripts/train_dyrep.py --data reddit --seed 0 --threads 3
+scripts/train_dyrep.py --data reddit --seed 1 --threads 3
+scripts/train_dyrep.py --data reddit --seed 2 --threads 3
+scripts/run_dyrep.py --data wikipedia --model dyrep_wikipedia_s0 --seed 0 --trials 300 --shadows 16 --threads 2
+scripts/run_dyrep.py --data wikipedia --model dyrep_wikipedia_s1 --seed 1 --trials 300 --shadows 16 --threads 2
+scripts/run_dyrep.py --data wikipedia --model dyrep_wikipedia_s2 --seed 2 --trials 300 --shadows 16 --threads 2
+scripts/run_dyrep.py --data wikipedia --model dyrep_wikipedia_s3 --seed 3 --trials 300 --shadows 16 --threads 2
+scripts/run_dyrep.py --data wikipedia --model dyrep_wikipedia_s4 --seed 4 --trials 300 --shadows 16 --threads 2
+scripts/run_dyrep.py --data mooc --model dyrep_mooc_s0 --seed 0 --trials 300 --shadows 16 --threads 2
+scripts/run_dyrep.py --data mooc --model dyrep_mooc_s1 --seed 1 --trials 300 --shadows 16 --threads 2
+scripts/run_dyrep.py --data mooc --model dyrep_mooc_s2 --seed 2 --trials 300 --shadows 16 --threads 2
+scripts/run_dyrep.py --data reddit --model dyrep_reddit_s0 --seed 0 --trials 300 --shadows 16 --threads 2
+scripts/run_dyrep.py --data reddit --model dyrep_reddit_s1 --seed 1 --trials 300 --shadows 16 --threads 2
+scripts/run_dyrep.py --data reddit --model dyrep_reddit_s2 --seed 2 --trials 300 --shadows 16 --threads 2

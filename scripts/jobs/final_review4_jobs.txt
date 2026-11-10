@@ -1,0 +1,7 @@
+# tgbl-review seeds 1-2 (continues final_review3 after a restart): learned restarters, then deletion and LiRA
+scripts/train_restarter.py --data tgbl-review --model tgn_tgbl-review_s1 --epochs 5 --threads 2
+scripts/train_restarter.py --data tgbl-review --model tgn_tgbl-review_s2 --epochs 5 --threads 2
+scripts/run_deletion.py --data tgbl-review --model tgn_tgbl-review_s1 --seed 1 --threads 3 --no_rank --methods none,store,reset,restart,exact,eps:0.05,khop:1,replay # needs: tgn_tgbl-review_s1_restarter.pt
+scripts/run_deletion.py --data tgbl-review --model tgn_tgbl-review_s2 --seed 2 --threads 3 --no_rank --methods none,store,reset,restart,exact,eps:0.05,khop:1,replay # needs: tgn_tgbl-review_s2_restarter.pt
+scripts/run_lira.py --data tgbl-review --model tgn_tgbl-review_s1 --seed 1 --shadows 16 --threads 3 --methods store,reset,restart,eps:0.05,khop:1,exact # needs: tgn_tgbl-review_s1_restarter.pt
+scripts/run_lira.py --data tgbl-review --model tgn_tgbl-review_s2 --seed 2 --shadows 16 --threads 3 --methods store,reset,restart,eps:0.05,khop:1,exact # needs: tgn_tgbl-review_s2_restarter.pt

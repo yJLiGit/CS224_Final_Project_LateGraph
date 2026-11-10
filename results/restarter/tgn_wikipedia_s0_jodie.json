@@ -1,0 +1,7 @@
+{
+ "model": "tgn_wikipedia_s0_jodie",
+ "epochs": 5,
+ "mse": 0.0955,
+ "memory_variance": 0.5669,
+ "explained_variance": 0.831539954136532
+}

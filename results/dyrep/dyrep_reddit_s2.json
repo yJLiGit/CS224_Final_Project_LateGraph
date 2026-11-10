@@ -1,0 +1,45 @@
+{
+ "config": {
+  "data": "reddit",
+  "model": "dyrep_reddit_s2",
+  "seed": 2,
+  "trials": 300,
+  "K": 1000,
+  "shadows": 16,
+  "threads": 2
+ },
+ "val_ap": 0.9744502333978453,
+ "mrr": 0.702096164226532,
+ "exactness": {
+  "trials": 300,
+  "max_abs_diff": 9.775161743164062e-06,
+  "cone_frac_median": 0.6539542221430018,
+  "cone_frac_mean": 0.531673053297673,
+  "cone_zero_frac": 0.02666666666666667,
+  "speedup_median": 1.2495204458427576
+ },
+ "deletion": {
+  "pairs_A": 1000,
+  "pairs_B": 1000,
+  "shadows": 16,
+  "methods": {
+   "none": {
+    "logit": 0.6229549999999999,
+    "probe": 0.5947910000000001
+   },
+   "store": {
+    "logit": 0.548486,
+    "probe": 0.542531,
+    "lira_logit": 0.705064,
+    "lira_cosine": 0.723394
+   },
+   "exact": {
+    "logit": 0.5076749999999999,
+    "probe": 0.506507,
+    "lira_logit": 0.495507,
+    "lira_cosine": 0.4957085
+   }
+  }
+ },
+ "wall_sec": 236.06511306762695
+}

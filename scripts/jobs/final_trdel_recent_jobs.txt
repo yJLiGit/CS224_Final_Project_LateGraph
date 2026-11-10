@@ -1,0 +1,6 @@
+# training-period deletions of recent pairs (last 20% of the training period)
+scripts/run_train_deletion.py --data wikipedia --seed 0 --K 500 --recent 0.2 --threads 3
+scripts/run_train_deletion.py --data wikipedia --seed 1 --K 500 --recent 0.2 --threads 3
+scripts/run_train_deletion.py --data wikipedia --seed 2 --K 500 --recent 0.2 --threads 3
+scripts/run_train_deletion.py --data reddit --seed 0 --K 500 --recent 0.2 --threads 3
+scripts/run_train_deletion.py --data mooc --seed 0 --K 500 --recent 0.2 --threads 3

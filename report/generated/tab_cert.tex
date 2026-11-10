@@ -1,0 +1,26 @@
+\begin{table}[t]
+\centering\scriptsize
+\caption{Contraction and the error bound on Wikipedia ($\varepsilon=0.05$; 100 random deletions per model and seed). Certified:
+updates with $\|J_{\text{own}}\|+\|J_{\text{partner}}\|<1$ (all updates for the contractive cell, which contracts by
+construction). Bound held: share of trials in which the per-node bound held for every node (first order for the
+GRU, proven for the cell). $\delta$-cert.: updates recomputed by $\delta$-certified repair ($\delta=0.02$) relative to exact repair.}
+\label{tab:cert}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & val.\ AP & test MRR & certified (\%) & bound held (\%) & bound / error & $\delta$-cert.\ cost \\
+\midrule
+standard TGN (GRU) & 0.965\,{\scriptsize$\pm$0.002} & 0.643\,{\scriptsize$\pm$0.018} & 0.0\,{\scriptsize$\pm$0.0} & 100 & 26.7 & -- \\
+penalty, $\rho=0.95$ & 0.956\,{\scriptsize$\pm$0.001} & 0.656\,{\scriptsize$\pm$0.005} & 20.3\,{\scriptsize$\pm$1.6} & 100 & 1.2 & -- \\
+penalty, $\rho=0.85$ & 0.951\,{\scriptsize$\pm$0.000} & 0.630\,{\scriptsize$\pm$0.007} & 99.2\,{\scriptsize$\pm$0.1} & 100 & 1.1 & -- \\
+penalty, $\rho=0.75$ & 0.946\,{\scriptsize$\pm$0.001} & 0.619\,{\scriptsize$\pm$0.006} & 99.9\,{\scriptsize$\pm$0.0} & 100 & 1.0 & -- \\
+penalty, $\rho=0.85$, $\lambda=1$ & 0.952\,{\scriptsize$\pm$0.001} & 0.630\,{\scriptsize$\pm$0.007} & 81.7\,{\scriptsize$\pm$3.3} & 100 & 1.1 & -- \\
+penalty, $\rho=0.85$, $\lambda=100$ & 0.948\,{\scriptsize$\pm$0.000} & 0.621\,{\scriptsize$\pm$0.002} & 99.8\,{\scriptsize$\pm$0.0} & 100 & 1.1 & -- \\
+contractive cell, $\rho\le0.95$ & 0.939\,{\scriptsize$\pm$0.001} & 0.582\,{\scriptsize$\pm$0.010} & 100 & 100 (proven) & 5.1 & 0.46 \\
+contractive cell, $\rho\le0.9$ & 0.939\,{\scriptsize$\pm$0.002} & 0.580\,{\scriptsize$\pm$0.016} & 100 & 100 (proven) & 5.2 & 0.45 \\
+contractive cell, $\rho\le0.8$ & 0.939\,{\scriptsize$\pm$0.002} & 0.583\,{\scriptsize$\pm$0.012} & 100 & 100 (proven) & 5.2 & 0.44 \\
+contractive cell, $\rho\le0.95$, $c=0.7$ & 0.942\,{\scriptsize$\pm$0.002} & 0.587\,{\scriptsize$\pm$0.016} & 100 & 100 (proven) & 5.6 & 0.47 \\
+contractive cell, $\rho\le0.99$, $c=0.9$ & 0.946\,{\scriptsize$\pm$0.001} & 0.606\,{\scriptsize$\pm$0.008} & 100 & 100 (proven) & 7.0 & 0.50 \\
+\bottomrule
+\end{tabular}
+\end{table}

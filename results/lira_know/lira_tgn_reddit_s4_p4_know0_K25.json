@@ -1,0 +1,151 @@
+{
+ "config": {
+  "data": "reddit",
+  "model": "tgn_reddit_s4",
+  "bq": 200,
+  "K": 25,
+  "jdel": 0.5,
+  "shadows": 64,
+  "methods": "store,reset,restart,eps:0.05,khop:1,exact",
+  "seed": 4,
+  "threads": 2,
+  "out": null,
+  "know": 0.0,
+  "after": 0
+ },
+ "pairs_A": 25,
+ "pairs_B": 25,
+ "tested": 50,
+ "jdel": 252,
+ "J": 505,
+ "unknown_events": 50331,
+ "methods": {
+  "store": {
+   "logit": {
+    "auc": 0.6608,
+    "tpr5": 0.24,
+    "tpr1": 0.0,
+    "auc_offline": 0.5871999999999999,
+    "in_out_gap": 8.261739440869619,
+    "nA": 25,
+    "nB": 25
+   },
+   "cosine": {
+    "auc": 0.7968,
+    "tpr5": 0.2,
+    "tpr1": 0.12,
+    "auc_offline": 0.6255999999999999,
+    "in_out_gap": 3.786746814824204,
+    "nA": 25,
+    "nB": 25
+   },
+   "raw_logit_auc": 0.6896
+  },
+  "reset": {
+   "logit": {
+    "auc": 0.7392000000000001,
+    "tpr5": 0.04,
+    "tpr1": 0.0,
+    "auc_offline": 0.5424,
+    "in_out_gap": 1.9382150529488895,
+    "nA": 25,
+    "nB": 25
+   },
+   "cosine": {
+    "auc": 0.9752,
+    "tpr5": 0.76,
+    "tpr1": 0.72,
+    "auc_offline": 0.8136000000000001,
+    "in_out_gap": 3.219330049264849,
+    "nA": 25,
+    "nB": 25
+   },
+   "raw_logit_auc": 0.3952
+  },
+  "restart": {
+   "logit": {
+    "auc": 0.45120000000000005,
+    "tpr5": 0.04,
+    "tpr1": 0.0,
+    "auc_offline": 0.6128,
+    "in_out_gap": 5.921464677167683,
+    "nA": 25,
+    "nB": 25
+   },
+   "cosine": {
+    "auc": 0.6047999999999999,
+    "tpr5": 0.04,
+    "tpr1": 0.0,
+    "auc_offline": 0.6768000000000001,
+    "in_out_gap": 10.80908401175273,
+    "nA": 25,
+    "nB": 25
+   },
+   "raw_logit_auc": 0.6704
+  },
+  "eps:0.05": {
+   "logit": {
+    "auc": 0.5,
+    "tpr5": 0.0,
+    "tpr1": 0.0,
+    "auc_offline": 0.544,
+    "in_out_gap": 0.0,
+    "nA": 25,
+    "nB": 25
+   },
+   "cosine": {
+    "auc": 0.5,
+    "tpr5": 0.0,
+    "tpr1": 0.0,
+    "auc_offline": 0.5104,
+    "in_out_gap": 0.0,
+    "nA": 25,
+    "nB": 25
+   },
+   "raw_logit_auc": 0.6511999999999999
+  },
+  "khop:1": {
+   "logit": {
+    "auc": 0.5,
+    "tpr5": 0.0,
+    "tpr1": 0.0,
+    "auc_offline": 0.5424,
+    "in_out_gap": 0.0,
+    "nA": 25,
+    "nB": 25
+   },
+   "cosine": {
+    "auc": 0.5,
+    "tpr5": 0.0,
+    "tpr1": 0.0,
+    "auc_offline": 0.5055999999999999,
+    "in_out_gap": 0.0,
+    "nA": 25,
+    "nB": 25
+   },
+   "raw_logit_auc": 0.6511999999999999
+  },
+  "exact": {
+   "logit": {
+    "auc": 0.5,
+    "tpr5": 0.0,
+    "tpr1": 0.0,
+    "auc_offline": 0.5424,
+    "in_out_gap": 0.0,
+    "nA": 25,
+    "nB": 25
+   },
+   "cosine": {
+    "auc": 0.5,
+    "tpr5": 0.0,
+    "tpr1": 0.0,
+    "auc_offline": 0.5055999999999999,
+    "in_out_gap": 0.0,
+    "nA": 25,
+    "nB": 25
+   },
+   "raw_logit_auc": 0.6511999999999999
+  }
+ },
+ "wall_sec": 72.31851530075073
+}

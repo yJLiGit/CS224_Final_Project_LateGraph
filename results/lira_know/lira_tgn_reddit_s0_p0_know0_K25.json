@@ -1,0 +1,151 @@
+{
+ "config": {
+  "data": "reddit",
+  "model": "tgn_reddit_s0",
+  "bq": 200,
+  "K": 25,
+  "jdel": 0.5,
+  "shadows": 64,
+  "methods": "store,reset,restart,eps:0.05,khop:1,exact",
+  "seed": 0,
+  "threads": 2,
+  "out": null,
+  "know": 0.0,
+  "after": 0
+ },
+ "pairs_A": 25,
+ "pairs_B": 25,
+ "tested": 50,
+ "jdel": 252,
+ "J": 505,
+ "unknown_events": 50344,
+ "methods": {
+  "store": {
+   "logit": {
+    "auc": 0.6032,
+    "tpr5": 0.16,
+    "tpr1": 0.04,
+    "auc_offline": 0.4416,
+    "in_out_gap": 7.383905128383443,
+    "nA": 25,
+    "nB": 25
+   },
+   "cosine": {
+    "auc": 0.5984,
+    "tpr5": 0.04,
+    "tpr1": 0.0,
+    "auc_offline": 0.49920000000000003,
+    "in_out_gap": 10.206465578046295,
+    "nA": 25,
+    "nB": 25
+   },
+   "raw_logit_auc": 0.5456
+  },
+  "reset": {
+   "logit": {
+    "auc": 0.8592,
+    "tpr5": 0.28,
+    "tpr1": 0.2,
+    "auc_offline": 0.6784,
+    "in_out_gap": 4.298892020720311,
+    "nA": 25,
+    "nB": 25
+   },
+   "cosine": {
+    "auc": 0.992,
+    "tpr5": 1.0,
+    "tpr1": 0.8,
+    "auc_offline": 0.9743999999999999,
+    "in_out_gap": 4.761290005806287,
+    "nA": 25,
+    "nB": 25
+   },
+   "raw_logit_auc": 0.24800000000000003
+  },
+  "restart": {
+   "logit": {
+    "auc": 0.6432,
+    "tpr5": 0.04,
+    "tpr1": 0.0,
+    "auc_offline": 0.44960000000000006,
+    "in_out_gap": 6.112956132334123,
+    "nA": 25,
+    "nB": 25
+   },
+   "cosine": {
+    "auc": 0.7136,
+    "tpr5": 0.32,
+    "tpr1": 0.12,
+    "auc_offline": 0.5568,
+    "in_out_gap": 4.831568503186341,
+    "nA": 25,
+    "nB": 25
+   },
+   "raw_logit_auc": 0.5392000000000001
+  },
+  "eps:0.05": {
+   "logit": {
+    "auc": 0.5,
+    "tpr5": 0.0,
+    "tpr1": 0.0,
+    "auc_offline": 0.4128,
+    "in_out_gap": 0.0,
+    "nA": 25,
+    "nB": 25
+   },
+   "cosine": {
+    "auc": 0.5,
+    "tpr5": 0.0,
+    "tpr1": 0.0,
+    "auc_offline": 0.4736,
+    "in_out_gap": 0.0,
+    "nA": 25,
+    "nB": 25
+   },
+   "raw_logit_auc": 0.5392
+  },
+  "khop:1": {
+   "logit": {
+    "auc": 0.5,
+    "tpr5": 0.0,
+    "tpr1": 0.0,
+    "auc_offline": 0.41280000000000006,
+    "in_out_gap": 0.0,
+    "nA": 25,
+    "nB": 25
+   },
+   "cosine": {
+    "auc": 0.5,
+    "tpr5": 0.0,
+    "tpr1": 0.0,
+    "auc_offline": 0.4736,
+    "in_out_gap": 0.0,
+    "nA": 25,
+    "nB": 25
+   },
+   "raw_logit_auc": 0.5376000000000001
+  },
+  "exact": {
+   "logit": {
+    "auc": 0.5,
+    "tpr5": 0.0,
+    "tpr1": 0.0,
+    "auc_offline": 0.41280000000000006,
+    "in_out_gap": 0.0,
+    "nA": 25,
+    "nB": 25
+   },
+   "cosine": {
+    "auc": 0.5,
+    "tpr5": 0.0,
+    "tpr1": 0.0,
+    "auc_offline": 0.4736,
+    "in_out_gap": 0.0,
+    "nA": 25,
+    "nB": 25
+   },
+   "raw_logit_auc": 0.5376000000000001
+  }
+ },
+ "wall_sec": 72.41886687278748
+}

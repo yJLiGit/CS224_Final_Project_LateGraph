@@ -1,0 +1,24 @@
+{
+ "wikipedia": {
+  "steps": 119,
+  "minutes_per_step": 64.4361343383789
+ },
+ "reddit": {
+  "steps": 505,
+  "minutes_per_step": 13.747953414916992
+ },
+ "mooc": {
+  "steps": 309,
+  "minutes_per_step": 17.364347457885742
+ },
+ "lastfm": {
+  "steps": 970,
+  "minutes_per_step": 289.89208984375
+ },
+ "sec": {
+  "lag_median_days": 2.8730787037037038,
+  "lag_p99_days": 97.09133958333332,
+  "lag_over4_frac": 0.26343322097831695,
+  "test_events": 156943
+ }
+}

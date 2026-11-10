@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "mooc",
+  "model": "tgn_mooc_s4",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 35109,
+  "J_own": {
+   "median": 1.1576812267303467,
+   "p90": 1.2750829458236694,
+   "p99": 1.4182285070419312,
+   "max": 1.630420446395874
+  },
+  "J_partner": {
+   "median": 0.7239721417427063,
+   "p90": 0.997995138168335,
+   "p99": 1.1244919300079346,
+   "max": 1.4007505178451538
+  },
+  "sum": {
+   "median": 1.8843305110931396,
+   "p90": 2.2396187782287598,
+   "p99": 2.4382176399230957,
+   "max": 2.9058659076690674
+  },
+  "certified_frac": 0.0
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.08387835323810577,
+   "median_err": 0.04530838131904602,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 15042.206489915918,
+   "p90_bound_over_err": 31592407.402155787,
+   "max_local_rho": 2.7632367610931396,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.9058659076690674,
+   "skipped_frac": 0.25961923141698817
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.3784891664981842,
+   "median_err": 0.14989402890205383,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 6031.856532668493,
+   "p90_bound_over_err": 53938675.48585561,
+   "max_local_rho": 2.6205554008483887,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.9058659076690674,
+   "skipped_frac": 0.37988151065996756
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 1.4153854846954346,
+   "median_err": 0.19071971625089645,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 25604.497372367172,
+   "p90_bound_over_err": 123437480.09094979,
+   "max_local_rho": 2.660611629486084,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.9058659076690674,
+   "skipped_frac": 0.4886780686633627
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 261.2052872180939,
+ "model_meta": {
+  "val_ap": 0.8561197389935518,
+  "lam": 0.0,
+  "rho": 0.9,
+  "cell_rho": null,
+  "updater": "gru"
+ }
+}

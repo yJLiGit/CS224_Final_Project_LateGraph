@@ -1,0 +1,5 @@
+scripts/run_exactness.py --data wikipedia --model tgn_wikipedia_s0 --trials 4000 --pyg 1000 --threads 2
+scripts/run_exactness.py --data reddit --model tgn_reddit_s0 --trials 3000 --threads 2
+scripts/run_exactness.py --data mooc --model tgn_mooc_s0 --trials 3000 --threads 2
+scripts/run_exactness.py --data wikipedia --model tgn_wikipedia_s0 --trials 1000 --double --threads 2
+scripts/run_exactness.py --data wikipedia --model tgn_wikipedia_s0 --trials 1000 --no_pad --threads 3

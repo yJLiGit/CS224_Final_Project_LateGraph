@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "wikipedia",
+  "model": "tgn_wikipedia_s4",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 18141,
+  "J_own": {
+   "median": 1.0827608108520508,
+   "p90": 1.1449527740478516,
+   "p99": 1.1957063674926758,
+   "max": 1.3018214702606201
+  },
+  "J_partner": {
+   "median": 0.8945490717887878,
+   "p90": 1.0058048963546753,
+   "p99": 1.1039862632751465,
+   "max": 1.2502597570419312
+  },
+  "sum": {
+   "median": 1.9780651330947876,
+   "p90": 2.1294562816619873,
+   "p99": 2.2424960136413574,
+   "max": 2.449807643890381
+  },
+  "certified_frac": 0.0
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.09166634827852249,
+   "median_err": 0.0,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 56.58296121037877,
+   "p90_bound_over_err": 1984.3337244445913,
+   "max_local_rho": 2.3926706314086914,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.449807643890381,
+   "skipped_frac": 0.06223095613814312
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.5135807394981384,
+   "median_err": 0.1781870424747467,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 17.110022342579796,
+   "p90_bound_over_err": 4899.472185271542,
+   "max_local_rho": 2.3926706314086914,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.449807643890381,
+   "skipped_frac": 0.17936580181459388
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 1.5805929899215698,
+   "median_err": 0.13776887208223343,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 31.70228140024721,
+   "p90_bound_over_err": 4796.700786399249,
+   "max_local_rho": 2.3926706314086914,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.449807643890381,
+   "skipped_frac": 0.28185654812971417
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 30.689143896102905,
+ "model_meta": {
+  "val_ap": 0.9656601857392555,
+  "lam": 0.0,
+  "rho": 0.9,
+  "cell_rho": null,
+  "updater": "gru"
+ }
+}

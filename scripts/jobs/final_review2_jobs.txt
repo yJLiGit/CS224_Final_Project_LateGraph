@@ -1,0 +1,14 @@
+# tgbl-review: two more TGN seeds, the learned restart, and deletion / LiRA (with the 1-hop rebuild) / late events for every seed
+scripts/train_restarter.py --data tgbl-review --model tgn_tgbl-review_s0 --epochs 5 --threads 2
+scripts/train_tgn.py --data tgbl-review --seed 1 --epochs 6 --threads 3
+scripts/train_tgn.py --data tgbl-review --seed 2 --epochs 6 --threads 3
+scripts/run_deletion.py --data tgbl-review --model tgn_tgbl-review_s0 --seed 0 --threads 3 --no_rank --methods none,store,reset,restart,exact,eps:0.05,khop:1,replay # needs: tgn_tgbl-review_s0_restarter.pt
+scripts/run_lira.py --data tgbl-review --model tgn_tgbl-review_s0 --seed 0 --shadows 16 --threads 3 --methods store,reset,restart,eps:0.05,khop:1,exact # needs: tgn_tgbl-review_s0_restarter.pt
+scripts/train_restarter.py --data tgbl-review --model tgn_tgbl-review_s1 --epochs 5 --threads 2
+scripts/train_restarter.py --data tgbl-review --model tgn_tgbl-review_s2 --epochs 5 --threads 2
+scripts/run_deletion.py --data tgbl-review --model tgn_tgbl-review_s1 --seed 1 --threads 3 --no_rank --methods none,store,reset,restart,exact,eps:0.05,khop:1,replay # needs: tgn_tgbl-review_s1_restarter.pt
+scripts/run_deletion.py --data tgbl-review --model tgn_tgbl-review_s2 --seed 2 --threads 3 --no_rank --methods none,store,reset,restart,exact,eps:0.05,khop:1,replay # needs: tgn_tgbl-review_s2_restarter.pt
+scripts/run_lira.py --data tgbl-review --model tgn_tgbl-review_s1 --seed 1 --shadows 16 --threads 3 --methods store,reset,restart,eps:0.05,khop:1,exact # needs: tgn_tgbl-review_s1_restarter.pt
+scripts/run_lira.py --data tgbl-review --model tgn_tgbl-review_s2 --seed 2 --shadows 16 --threads 3 --methods store,reset,restart,eps:0.05,khop:1,exact # needs: tgn_tgbl-review_s2_restarter.pt
+scripts/run_stream.py --data tgbl-review --model tgn_tgbl-review_s1 --delay rand --med 48 --seed 1 --threads 3 --max_steps 200 --max_queries 300 --methods oracle,exact,replay,eps:0.05,arrival,drop,buffer:24,buffer:96
+scripts/run_stream.py --data tgbl-review --model tgn_tgbl-review_s2 --delay rand --med 48 --seed 2 --threads 3 --max_steps 200 --max_queries 300 --methods oracle,exact,replay,eps:0.05,arrival,drop,buffer:24,buffer:96

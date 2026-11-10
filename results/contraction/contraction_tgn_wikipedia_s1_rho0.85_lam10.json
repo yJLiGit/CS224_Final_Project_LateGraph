@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "wikipedia",
+  "model": "tgn_wikipedia_s1_rho0.85_lam10",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 18141,
+  "J_own": {
+   "median": 0.7129665613174438,
+   "p90": 0.7388885021209717,
+   "p99": 0.773337721824646,
+   "max": 1.002219796180725
+  },
+  "J_partner": {
+   "median": 0.20942102372646332,
+   "p90": 0.2312627136707306,
+   "p99": 0.25246816873550415,
+   "max": 0.28805023431777954
+  },
+  "sum": {
+   "median": 0.9205275774002075,
+   "p90": 0.9443989992141724,
+   "p99": 0.9854539036750793,
+   "max": 1.2083745002746582
+  },
+  "certified_frac": 0.9936607684251144
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.04442034661769867,
+   "median_err": 0.0,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.116011923336924,
+   "p90_bound_over_err": 1.686517247484005,
+   "max_local_rho": 1.062403678894043,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.2083745002746582,
+   "skipped_frac": 0.08664389488736042
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.25877872109413147,
+   "median_err": 0.05582763999700546,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.010099229581927,
+   "p90_bound_over_err": 1.7487517088491795,
+   "max_local_rho": 1.2083745002746582,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.2083745002746582,
+   "skipped_frac": 0.19534865689384648
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 0.9715228080749512,
+   "median_err": 0.027858455665409565,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.2996765691271948,
+   "p90_bound_over_err": 3.3440493607244304,
+   "max_local_rho": 1.2083745002746582,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.2083745002746582,
+   "skipped_frac": 0.23707791259423916
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 32.241780042648315,
+ "model_meta": {
+  "val_ap": 0.9512233616536014,
+  "lam": 10.0,
+  "rho": 0.85,
+  "cell_rho": null,
+  "updater": "gru"
+ }
+}

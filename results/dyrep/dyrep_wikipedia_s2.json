@@ -1,0 +1,45 @@
+{
+ "config": {
+  "data": "wikipedia",
+  "model": "dyrep_wikipedia_s2",
+  "seed": 2,
+  "trials": 300,
+  "K": 1000,
+  "shadows": 16,
+  "threads": 2
+ },
+ "val_ap": 0.9518945180939236,
+ "mrr": 0.6338291168212891,
+ "exactness": {
+  "trials": 300,
+  "max_abs_diff": 1.0639429092407227e-05,
+  "cone_frac_median": 0.08574199266391944,
+  "cone_frac_mean": 0.19598260050512495,
+  "cone_zero_frac": 0.10666666666666667,
+  "speedup_median": 1.9398838194128698
+ },
+ "deletion": {
+  "pairs_A": 338,
+  "pairs_B": 338,
+  "shadows": 16,
+  "methods": {
+   "none": {
+    "logit": 0.741570673295753,
+    "probe": 0.718120864115402
+   },
+   "store": {
+    "logit": 0.6171877735373412,
+    "probe": 0.6520867616680088,
+    "lira_logit": 0.7424022268127868,
+    "lira_cosine": 0.7992454745982284
+   },
+   "exact": {
+    "logit": 0.5407242393473618,
+    "probe": 0.5573946990651588,
+    "lira_logit": 0.5457792094114352,
+    "lira_cosine": 0.4924328629949931
+   }
+  }
+ },
+ "wall_sec": 128.16302299499512
+}

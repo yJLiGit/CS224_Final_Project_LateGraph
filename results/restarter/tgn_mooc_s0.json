@@ -1,0 +1,35 @@
+{
+ "model": "tgn_mooc_s0",
+ "epochs": 5,
+ "mse": 0.0473,
+ "memory_variance": 0.41,
+ "explained_variance": 0.8846341463414634,
+ "history": [
+  {
+   "epoch": 1,
+   "mse": 0.051,
+   "variance": 0.41
+  },
+  {
+   "epoch": 2,
+   "mse": 0.0484,
+   "variance": 0.41
+  },
+  {
+   "epoch": 3,
+   "mse": 0.0479,
+   "variance": 0.41
+  },
+  {
+   "epoch": 4,
+   "mse": 0.0476,
+   "variance": 0.41
+  },
+  {
+   "epoch": 5,
+   "mse": 0.0473,
+   "variance": 0.41
+  }
+ ],
+ "source_log": "015_train_restarter_data_mooc_model_tgn_mooc_s0_epochs_5_threads_2.log"
+}

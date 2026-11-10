@@ -1,0 +1,22 @@
+# final project, batch 1: seeds 3 and 4 of every model behind the main claims, and LastFM (larger, hub-heavy)
+scripts/train_tgn.py --data reddit --seed 3 --threads 3
+scripts/train_tgn.py --data reddit --seed 4 --threads 3
+scripts/train_tgn.py --data lastfm --seed 0 --threads 3
+scripts/train_tgn.py --data lastfm --seed 1 --threads 3
+scripts/train_tgn.py --data lastfm --seed 2 --threads 3
+scripts/train_tgn.py --data sec --seed 3 --epochs 10 --threads 3
+scripts/train_tgn.py --data sec --seed 4 --epochs 10 --threads 3
+scripts/train_tgn.py --data mooc --seed 3 --threads 3
+scripts/train_tgn.py --data mooc --seed 4 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 3 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 4 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 3 --emb id --threads 3
+scripts/train_tgn.py --data wikipedia --seed 4 --emb id --threads 3
+scripts/train_tgn.py --data wikipedia --seed 3 --emb nomem --threads 3
+scripts/train_tgn.py --data wikipedia --seed 4 --emb nomem --threads 3
+scripts/train_tgn.py --data wikipedia --seed 3 --lam 10 --rho 0.75 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 4 --lam 10 --rho 0.75 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 3 --lam 10 --rho 0.85 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 4 --lam 10 --rho 0.85 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 3 --lam 10 --rho 0.95 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 4 --lam 10 --rho 0.95 --threads 3

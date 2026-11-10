@@ -1,0 +1,26 @@
+scripts/train_tgn.py --data reddit --seed 0 --threads 3
+scripts/train_tgn.py --data reddit --seed 1 --threads 3
+scripts/train_tgn.py --data reddit --seed 2 --threads 3
+scripts/train_tgn.py --data mooc --seed 0 --threads 3
+scripts/train_tgn.py --data mooc --seed 1 --threads 3
+scripts/train_tgn.py --data mooc --seed 2 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 0 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 1 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 2 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 0 --emb id --threads 3
+scripts/train_tgn.py --data wikipedia --seed 1 --emb id --threads 3
+scripts/train_tgn.py --data wikipedia --seed 2 --emb id --threads 3
+scripts/train_tgn.py --data wikipedia --seed 0 --lam 10 --rho 0.75 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 1 --lam 10 --rho 0.75 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 2 --lam 10 --rho 0.75 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 0 --lam 10 --rho 0.95 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 1 --lam 10 --rho 0.95 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 2 --lam 10 --rho 0.95 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 0 --lam 10 --rho 0.85 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 1 --lam 10 --rho 0.85 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 2 --lam 10 --rho 0.85 --threads 3
+scripts/train_tgn.py --data wikipedia --seed 0 --emb nomem --threads 3
+scripts/train_tgn.py --data wikipedia --seed 1 --emb nomem --threads 3
+scripts/train_tgn.py --data wikipedia --seed 2 --emb nomem --threads 3
+scripts/train_tgn.py --data mooc --seed 0 --emb nomem --threads 3
+scripts/train_tgn.py --data reddit --seed 0 --emb nomem --threads 3

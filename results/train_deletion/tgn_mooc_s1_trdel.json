@@ -1,0 +1,70 @@
+{
+ "config": {
+  "data": "mooc",
+  "seed": 1,
+  "K": 500,
+  "epochs": 15,
+  "ft_epochs": 1,
+  "threads": 3,
+  "mrr_steps": 50,
+  "out": null,
+  "recent": 0.0
+ },
+ "candidates": 118735,
+ "pairs_A": 500,
+ "pairs_B": 500,
+ "events_A": 1113,
+ "events_B": 1060,
+ "train_minutes": {
+  "full": 5.412302780151367,
+  "retrain": 7.455606234073639,
+  "finetune": 0.6008192340532938
+ },
+ "memory_repair": {
+  "recomputed": 166936,
+  "window_updates": 169027,
+  "history_updates": 169027,
+  "sec": 3.4603219032287598,
+  "max_abs_vs_rebuild": 1.2367963790893555e-06,
+  "single_pair": {
+   "cone_frac_median": 0.9292991795583517,
+   "recomputed_median": 71793.0,
+   "sec_median": 0.9664319753646851,
+   "visited_median": 676.5,
+   "window_steps_median": 1136.0
+  }
+ },
+ "methods": {
+  "none": {
+   "logit": 0.47715199999999997,
+   "rank": 0.49949000000000005,
+   "probe": 0.5153760000000001,
+   "mrr": 0.15923458337783813
+  },
+  "store": {
+   "logit": 0.47524,
+   "rank": 0.49874799999999997,
+   "probe": 0.515212,
+   "mrr": 0.1592334657907486
+  },
+  "memory": {
+   "logit": 0.4719519999999999,
+   "rank": 0.495678,
+   "probe": 0.510872,
+   "mrr": 0.1596728265285492
+  },
+  "finetune": {
+   "logit": 0.46684800000000004,
+   "rank": 0.46251,
+   "probe": 0.493376,
+   "mrr": 0.2257528007030487
+  },
+  "retrain": {
+   "logit": 0.46553600000000006,
+   "rank": 0.494028,
+   "probe": 0.47744,
+   "mrr": 0.2235773503780365
+  }
+ },
+ "wall_sec": 926.4282093048096
+}

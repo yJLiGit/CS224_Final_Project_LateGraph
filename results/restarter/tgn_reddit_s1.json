@@ -1,0 +1,35 @@
+{
+ "model": "tgn_reddit_s1",
+ "epochs": 5,
+ "mse": 0.0615,
+ "memory_variance": 0.4944,
+ "explained_variance": 0.8756067961165048,
+ "history": [
+  {
+   "epoch": 1,
+   "mse": 0.0715,
+   "variance": 0.4944
+  },
+  {
+   "epoch": 2,
+   "mse": 0.0643,
+   "variance": 0.4944
+  },
+  {
+   "epoch": 3,
+   "mse": 0.0627,
+   "variance": 0.4944
+  },
+  {
+   "epoch": 4,
+   "mse": 0.062,
+   "variance": 0.4944
+  },
+  {
+   "epoch": 5,
+   "mse": 0.0615,
+   "variance": 0.4944
+  }
+ ],
+ "source_log": "013_train_restarter_data_reddit_model_tgn_reddit_s1_epochs_5_threads_2.log"
+}

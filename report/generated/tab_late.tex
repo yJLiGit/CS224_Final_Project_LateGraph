@@ -1,0 +1,37 @@
+\begin{table}[t]
+\centering\scriptsize
+\caption{Late events (random delays), steps of 200 events, mean $\pm$ std over seeds. MRR changes are relative to exact repair
+and paired within each seed; compute is in multiples of normal in-order processing. $^\ddagger$Daily steps (the timestamps
+are days), delays with a median of 2 days, the first 200 test days with 300 queries per day; buffers of 1 and 4 days.
+$^\S$Real arrival times and amendments, daily steps; buffers of 1 and 4 days.}
+\label{tab:late}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & Wikipedia & Reddit & MOOC & LastFM & tgbl-review$^\ddagger$ & SEC$^\S$ \\
+\midrule
+seeds & 5 & 5 & 5 & 3 & 3 & 5 \\
+test events that arrive late (\%) & 18.0 & 20.0 & 19.8 & 11.8 & 15.1 & 93.0 \\
+MRR of exact repair & 0.640\,{\scriptsize$\pm$0.018} & 0.739\,{\scriptsize$\pm$0.019} & 0.152\,{\scriptsize$\pm$0.082} & 0.083\,{\scriptsize$\pm$0.021} & 0.359\,{\scriptsize$\pm$0.033} & 0.653\,{\scriptsize$\pm$0.022} \\
+\midrule
+MRR vs.\ exact repair (\%) &  &  &  &  &  &  \\
+\quad oracle (all on time) & +0.45\,{\scriptsize$\pm$0.16} & +0.13\,{\scriptsize$\pm$0.08} & +0.43\,{\scriptsize$\pm$1.35} & -0.23\,{\scriptsize$\pm$0.41} & +0.04\,{\scriptsize$\pm$0.04} & +1.74\,{\scriptsize$\pm$0.09} \\
+\quad arrival order & +0.13\,{\scriptsize$\pm$0.56} & -0.13\,{\scriptsize$\pm$0.10} & +0.13\,{\scriptsize$\pm$2.84} & +2.32\,{\scriptsize$\pm$2.81} & +1.37\,{\scriptsize$\pm$4.73} & +0.07\,{\scriptsize$\pm$0.17} \\
+\quad drop late events & +0.04\,{\scriptsize$\pm$0.56} & -0.06\,{\scriptsize$\pm$0.06} & +0.40\,{\scriptsize$\pm$0.34} & +1.77\,{\scriptsize$\pm$2.22} & +0.12\,{\scriptsize$\pm$0.24} & -0.91\,{\scriptsize$\pm$0.30} \\
+\quad buffer 1 h (1 day$^{\ddagger\S}$) & -4.92\,{\scriptsize$\pm$0.86} & -1.53\,{\scriptsize$\pm$0.83} & -11.33\,{\scriptsize$\pm$9.19} & -4.74\,{\scriptsize$\pm$8.69} & +2.08\,{\scriptsize$\pm$5.00} & -0.06\,{\scriptsize$\pm$0.09} \\
+\quad buffer 4 h (4 days) & -9.49\,{\scriptsize$\pm$0.71} & -1.99\,{\scriptsize$\pm$0.52} & -14.24\,{\scriptsize$\pm$10.94} & -2.72\,{\scriptsize$\pm$5.79} & +0.24\,{\scriptsize$\pm$2.23} & -0.24\,{\scriptsize$\pm$0.09} \\
+\quad $\varepsilon$-repair, $\varepsilon=0.05$ & +0.01\,{\scriptsize$\pm$0.05} & -0.01\,{\scriptsize$\pm$0.03} & +0.32\,{\scriptsize$\pm$0.24} & +0.09\,{\scriptsize$\pm$0.21} & +0.01\,{\scriptsize$\pm$0.05} & -0.00\,{\scriptsize$\pm$0.01} \\
+\midrule
+compute ($\times$ normal processing) &  &  &  &  &  &  \\
+\quad full replay & 16.72 & 69.37 & 48.97 & 5.88 & 34.48 & 54.86 \\
+\quad exact repair (cone) & 1.30 & 13.69 & 23.10 & 1.11 & 1.10 & 1.06 \\
+\quad 1-hop rebuild & 1.27 & 7.18 & 21.92 & 1.10 & -- & 1.05 \\
+\quad $\varepsilon$-repair & 1.24 & 1.89 & 2.20 & 1.08 & 1.07 & 1.04 \\
+\midrule
+top-1 prediction as exact repair (\%) &  &  &  &  &  &  \\
+\quad arrival order & 78.7 & 91.6 & 69.7 & 79.6 & 82.0 & 84.9 \\
+\quad $\varepsilon$-repair & 99.3 & 98.4 & 90.7 & 98.3 & 99.4 & 99.8 \\
+\quad 1-hop rebuild & 99.7 & 99.8 & 100.0 & 100.0 & -- & 99.9 \\
+\bottomrule
+\end{tabular}
+\end{table}

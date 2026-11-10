@@ -1,0 +1,7 @@
+{
+ "model": "tgn_mooc_s2",
+ "epochs": 5,
+ "mse": 0.0551,
+ "memory_variance": 0.4541,
+ "explained_variance": 0.8786610878661087
+}

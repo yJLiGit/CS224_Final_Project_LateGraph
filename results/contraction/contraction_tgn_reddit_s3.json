@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "reddit",
+  "model": "tgn_reddit_s3",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 129792,
+  "J_own": {
+   "median": 1.2426667213439941,
+   "p90": 1.3790152072906494,
+   "p99": 1.534751534461975,
+   "max": 1.7906383275985718
+  },
+  "J_partner": {
+   "median": 0.7325527667999268,
+   "p90": 0.8647314310073853,
+   "p99": 0.9627095460891724,
+   "max": 1.1138384342193604
+  },
+  "sum": {
+   "median": 1.9794920682907104,
+   "p90": 2.1937813758850098,
+   "p99": 2.3757762908935547,
+   "max": 2.7399277687072754
+  },
+  "certified_frac": 0.0
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.09492224454879761,
+   "median_err": 0.05637059174478054,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 2066.126825955604,
+   "p90_bound_over_err": 6702604.715365741,
+   "max_local_rho": 2.650122880935669,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.7399277687072754,
+   "skipped_frac": 0.23642322098277618
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.4453081786632538,
+   "median_err": 0.28549008071422577,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1667.9416709367902,
+   "p90_bound_over_err": 16548514.902536413,
+   "max_local_rho": 2.650122880935669,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.7399277687072754,
+   "skipped_frac": 0.3981079948544392
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 1.5596721172332764,
+   "median_err": 0.6218338906764984,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 834.2902195947672,
+   "p90_bound_over_err": 50746577.83093566,
+   "max_local_rho": 2.650122880935669,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.7399277687072754,
+   "skipped_frac": 0.6301833086166689
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 214.97333812713623,
+ "model_meta": {
+  "val_ap": 0.9859883208285978,
+  "lam": 0.0,
+  "rho": 0.9,
+  "cell_rho": null,
+  "updater": "gru"
+ }
+}

@@ -1,0 +1,2 @@
+# tgbl-review (TGB, 4.9M events): one TGN, then its experiments
+scripts/train_tgn.py --data tgbl-review --seed 0 --epochs 6 --threads 3

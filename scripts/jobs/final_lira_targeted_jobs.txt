@@ -1,0 +1,21 @@
+# Targeted attacker with partial knowledge: few candidate pairs (K=25) and only part of the other events known
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s0 --seed 0 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.5
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s1 --seed 1 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.5
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s2 --seed 2 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.5
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s3 --seed 3 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.5
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s4 --seed 4 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.5
+scripts/run_lira.py --data reddit --model tgn_reddit_s0 --seed 0 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.5
+scripts/run_lira.py --data reddit --model tgn_reddit_s1 --seed 1 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.5
+scripts/run_lira.py --data reddit --model tgn_reddit_s2 --seed 2 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.5
+scripts/run_lira.py --data reddit --model tgn_reddit_s3 --seed 3 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.5
+scripts/run_lira.py --data reddit --model tgn_reddit_s4 --seed 4 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.5
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s0 --seed 0 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.0
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s1 --seed 1 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.0
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s2 --seed 2 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.0
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s3 --seed 3 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.0
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s4 --seed 4 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.0
+scripts/run_lira.py --data reddit --model tgn_reddit_s0 --seed 0 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.0
+scripts/run_lira.py --data reddit --model tgn_reddit_s1 --seed 1 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.0
+scripts/run_lira.py --data reddit --model tgn_reddit_s2 --seed 2 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.0
+scripts/run_lira.py --data reddit --model tgn_reddit_s3 --seed 3 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.0
+scripts/run_lira.py --data reddit --model tgn_reddit_s4 --seed 4 --shadows 64 --threads 2 --methods store,reset,restart,eps:0.05,khop:1,exact --K 25 --know 0.0

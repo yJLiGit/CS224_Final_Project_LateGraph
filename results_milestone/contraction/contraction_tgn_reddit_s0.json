@@ -1,0 +1,77 @@
+{
+ "config": {
+  "data": "reddit",
+  "model": "tgn_reddit_s0",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 129792,
+  "J_own": {
+   "median": 1.2369482517242432,
+   "p90": 1.342511773109436,
+   "p99": 1.4379048347473145,
+   "max": 1.6797610521316528
+  },
+  "J_partner": {
+   "median": 0.7434966564178467,
+   "p90": 0.8565484881401062,
+   "p99": 0.946294903755188,
+   "max": 1.2181540727615356
+  },
+  "sum": {
+   "median": 1.9879493713378906,
+   "p90": 2.154989242553711,
+   "p99": 2.330575942993164,
+   "max": 2.762044906616211
+  },
+  "certified_frac": 0.0
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.10179268568754196,
+   "median_err": 0.0538897980004549,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 4006.3006935720528,
+   "p90_bound_over_err": 5982850.594660647,
+   "max_local_rho": 2.6865596771240234,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.762044906616211,
+   "skipped_frac": 0.23650628101100962
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.4079296290874481,
+   "median_err": 0.2711426466703415,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1332.374900325764,
+   "p90_bound_over_err": 10771667.729990812,
+   "max_local_rho": 2.6865596771240234,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.762044906616211,
+   "skipped_frac": 0.400960860729499
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 1.4568421840667725,
+   "median_err": 0.6998598277568817,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 404.9043255190989,
+   "p90_bound_over_err": 16226591.078274773,
+   "max_local_rho": 2.6865596771240234,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.762044906616211,
+   "skipped_frac": 0.6409774805717059
+  }
+ },
+ "wall_sec": 195.5856010913849,
+ "model_meta": {
+  "val_ap": 0.9867175549903983,
+  "lam": 0.0,
+  "rho": 0.9
+ }
+}

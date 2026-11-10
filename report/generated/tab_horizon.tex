@@ -1,0 +1,22 @@
+\begin{table}[!htb]
+\centering\scriptsize
+\caption{Journal length (random delays, mean over seeds). Late events older than the journal are applied on arrival.}
+\label{tab:horizon}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+ & journal & memory (MB) & applied on arrival & compute ($\times$) & top-1 same as exact (\%) \\
+\midrule
+Wikipedia & full & 14.5 & 0 & 1.29 & 100.0 \\
+Wikipedia & 50 steps & 6.2 & 1 & 1.28 & 100.0 \\
+Wikipedia & 20 steps & 2.5 & 35 & 1.25 & 99.0 \\
+Wikipedia & 10 steps & 1.3 & 177 & 1.22 & 95.7 \\
+Wikipedia & 5 steps & 0.6 & 630 & 1.20 & 90.6 \\
+MOOC & full & 28.0 & 0 & 23.21 & 100.0 \\
+MOOC & 50 steps & 4.8 & 341 & 16.16 & 97.9 \\
+MOOC & 20 steps & 2.3 & 2640 & 6.21 & 90.1 \\
+MOOC & 10 steps & 1.4 & 5504 & 2.63 & 84.2 \\
+MOOC & 5 steps & 1.0 & 8276 & 1.48 & 78.4 \\
+\bottomrule
+\end{tabular}
+\end{table}

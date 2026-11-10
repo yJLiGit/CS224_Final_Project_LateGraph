@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering\small
+\caption{Exact repair on random edits of a 100-step test window (insertions, deletions and amendments; 10\% of the trials edit
+2--10 events at once). Max.\ error: largest $|$repaired $-$ reference$|$ over all memory entries, where the reference is a
+sequential recomputation of the corrected stream (float32 unless noted). Single edits: share that changes no memory, and
+for the others the cone as a share of all updates since the edit (median and 90th percentile; $^\ast$DyRep: median over all
+trials). Speed-up: median, over single edits that change a memory, of the time of rollback + replay over the time of exact
+repair with the step index (in brackets: walking every step), on an idle laptop CPU; edits that change nothing are
+recognised at their own step.}
+\label{tab:exact}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+ & & & & \multicolumn{3}{c}{single edits} & \\
+\cmidrule(lr){5-7}
+ & trials & max.\ error & bit-identical & no change & cone & cone p90 & speed-up \\
+\midrule
+Wikipedia (TGN) & 3,945 & 5.4e-07 & 98\% & 57\% & 0.48\% & 6.8\% & 8.4$\times$ (2.4$\times$) \\
+Reddit (TGN) & 2,960 & 9.1e-07 & 72\% & 11\% & 0.38\% & 27.5\% & 5.9$\times$ (2.5$\times$) \\
+MOOC (TGN) & 2,960 & 1.0e-06 & 70\% & 54\% & 52.16\% & 80.8\% & 0.9$\times$ (1.2$\times$) \\
+LastFM (TGN) & 1,977 & 0 & 100\% & 26\% & 13.74\% & 62.8\% & 1.5$\times$ (1.6$\times$) \\
+tgbl-review (TGN) & 982 & 6.0e-08 & 86\% & 6\% & 0.01\% & 0.04\% & 8.2$\times$ (1.8$\times$) \\
+Wikipedia (JODIE) & 1,977 & 2.5e-06 & 49\% & 56\% & 0.52\% & 7.8\% & -- \\
+Wikipedia (contractive) & 1,977 & 3.0e-08 & 99\% & 56\% & 0.52\% & 7.8\% & -- \\
+Wikipedia (DyRep) & 1,500 & 1.6e-05 & -- & 9\%$^\ast$ & 14.75\%$^\ast$ & -- & -- \\
+Wikipedia (TGN, float64) & 983 & 0 & 100\% & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}

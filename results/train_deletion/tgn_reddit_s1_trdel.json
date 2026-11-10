@@ -1,0 +1,70 @@
+{
+ "config": {
+  "data": "reddit",
+  "seed": 1,
+  "K": 500,
+  "epochs": 15,
+  "ft_epochs": 1,
+  "threads": 3,
+  "mrr_steps": 50,
+  "out": null,
+  "recent": 0.0
+ },
+ "candidates": 40435,
+ "pairs_A": 500,
+ "pairs_B": 500,
+ "events_A": 1081,
+ "events_B": 1200,
+ "train_minutes": {
+  "full": 34.95351494550705,
+  "retrain": 31.806565733750663,
+  "finetune": 2.3401595036188763
+ },
+ "memory_repair": {
+  "recomputed": 725244,
+  "window_updates": 743705,
+  "history_updates": 743705,
+  "sec": 9.40817403793335,
+  "max_abs_vs_rebuild": 1.0207295417785645e-06,
+  "single_pair": {
+   "cone_frac_median": 0.945608154489715,
+   "recomputed_median": 510574.5,
+   "sec_median": 5.959902048110962,
+   "visited_median": 2018.0,
+   "window_steps_median": 2091.5
+  }
+ },
+ "methods": {
+  "none": {
+   "logit": 0.510988,
+   "rank": 0.515156,
+   "probe": 0.49471600000000004,
+   "mrr": 0.7348489165306091
+  },
+  "store": {
+   "logit": 0.501876,
+   "rank": 0.508532,
+   "probe": 0.495272,
+   "mrr": 0.7348662614822388
+  },
+  "memory": {
+   "logit": 0.493832,
+   "rank": 0.50152,
+   "probe": 0.492832,
+   "mrr": 0.7346174716949463
+  },
+  "finetune": {
+   "logit": 0.49329599999999996,
+   "rank": 0.496302,
+   "probe": 0.458596,
+   "mrr": 0.7332774996757507
+  },
+  "retrain": {
+   "logit": 0.519372,
+   "rank": 0.5213000000000001,
+   "probe": 0.5025040000000001,
+   "mrr": 0.7410232424736023
+  }
+ },
+ "wall_sec": 4767.589309215546
+}

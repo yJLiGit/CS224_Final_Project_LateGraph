@@ -1,0 +1,116 @@
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s0 --epochs 5 --threads 2
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s1 --epochs 5 --threads 2
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s2 --epochs 5 --threads 2
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s0_id --epochs 5 --threads 2
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s1_id --epochs 5 --threads 2
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s2_id --epochs 5 --threads 2
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s0_rho0.75_lam10 --epochs 5 --threads 2
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s1_rho0.75_lam10 --epochs 5 --threads 2
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s2_rho0.75_lam10 --epochs 5 --threads 2
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s0_rho0.95_lam10 --epochs 5 --threads 2
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s1_rho0.95_lam10 --epochs 5 --threads 2
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s2_rho0.95_lam10 --epochs 5 --threads 2
+scripts/train_restarter.py --data reddit --model tgn_reddit_s0 --epochs 5 --threads 2
+scripts/train_restarter.py --data reddit --model tgn_reddit_s1 --epochs 5 --threads 2
+scripts/train_restarter.py --data reddit --model tgn_reddit_s2 --epochs 5 --threads 2
+scripts/train_restarter.py --data mooc --model tgn_mooc_s0 --epochs 5 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s0 --delay rand --seed 0 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s0 --delay active --seed 0 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s0 --delay burst --seed 0 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s1 --delay rand --seed 1 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s1 --delay active --seed 1 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s1 --delay burst --seed 1 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s2 --delay rand --seed 2 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s2 --delay active --seed 2 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s2 --delay burst --seed 2 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s0 --delay rand --seed 0 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s0 --delay active --seed 0 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s0 --delay burst --seed 0 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s1 --delay rand --seed 1 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s1 --delay active --seed 1 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s1 --delay burst --seed 1 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s2 --delay rand --seed 2 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s2 --delay active --seed 2 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s2 --delay burst --seed 2 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s0 --delay rand --bq 50 --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0 --delay rand --bq 50 --seed 0 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s1 --delay rand --bq 50 --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1 --delay rand --bq 50 --seed 1 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s2 --delay rand --bq 50 --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2 --delay rand --bq 50 --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0 --delay rand --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0 --delay active --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0 --delay burst --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1 --delay rand --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1 --delay active --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1 --delay burst --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2 --delay rand --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2 --delay active --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2 --delay burst --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0 --delay offline --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0 --delay itemshard --seed 0 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s0 --delay offline --seed 0 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s0 --delay itemshard --seed 0 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s0 --delay offline --seed 0 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s0 --delay itemshard --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_id --delay rand --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_nomem --delay rand --seed 0 --threads 2 --methods oracle,exact,arrival,drop,buffer:1,buffer:4
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_rho0.75_lam10 --delay rand --seed 0 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_rho0.85_lam10 --delay rand --seed 0 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_rho0.95_lam10 --delay rand --seed 0 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_id --delay rand --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_nomem --delay rand --seed 1 --threads 2 --methods oracle,exact,arrival,drop,buffer:1,buffer:4
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_rho0.75_lam10 --delay rand --seed 1 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_rho0.85_lam10 --delay rand --seed 1 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_rho0.95_lam10 --delay rand --seed 1 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_id --delay rand --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_nomem --delay rand --seed 2 --threads 2 --methods oracle,exact,arrival,drop,buffer:1,buffer:4
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_rho0.75_lam10 --delay rand --seed 2 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_rho0.85_lam10 --delay rand --seed 2 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_rho0.95_lam10 --delay rand --seed 2 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0 --delay rand --seed 0 --threads 2 --methods oracle,exact,exact@5,exact@10,exact@20,exact@50,eps:0.05@20,arrival --out horizon_tgn_wikipedia_s0_rand
+scripts/run_stream.py --data mooc --model tgn_mooc_s0 --delay rand --seed 0 --threads 2 --methods oracle,exact,exact@5,exact@10,exact@20,exact@50,eps:0.05@20,arrival --out horizon_tgn_mooc_s0_rand
+scripts/run_exactness.py --data wikipedia --model tgn_wikipedia_s0 --trials 4000 --pyg 1000 --threads 2
+scripts/run_exactness.py --data mooc --model tgn_mooc_s0 --trials 3000 --threads 2
+scripts/run_exactness.py --data reddit --model tgn_reddit_s0 --trials 3000 --threads 2
+scripts/run_exactness.py --data wikipedia --model tgn_wikipedia_s0 --trials 1000 --double --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s0 --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s0_id --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s0_rho0.75_lam10 --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s0_rho0.85_lam10 --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s0_rho0.95_lam10 --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s1 --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s1_id --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s1_rho0.75_lam10 --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s1_rho0.85_lam10 --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s1_rho0.95_lam10 --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s2 --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s2_id --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s2_rho0.75_lam10 --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s2_rho0.85_lam10 --trials 100 --threads 2
+scripts/run_contraction.py --data wikipedia --model tgn_wikipedia_s2_rho0.95_lam10 --trials 100 --threads 2
+scripts/run_contraction.py --data mooc --model tgn_mooc_s0 --trials 100 --threads 2
+scripts/run_contraction.py --data mooc --model tgn_mooc_s1 --trials 100 --threads 2
+scripts/run_contraction.py --data mooc --model tgn_mooc_s2 --trials 100 --threads 2
+scripts/run_contraction.py --data reddit --model tgn_reddit_s0 --trials 100 --threads 2
+scripts/run_contraction.py --data reddit --model tgn_reddit_s1 --trials 100 --threads 2
+scripts/run_contraction.py --data reddit --model tgn_reddit_s2 --trials 100 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s0 --seed 0 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s1 --seed 1 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s2 --seed 2 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s0_id --seed 0 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s1_id --seed 1 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s2_id --seed 2 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s0_rho0.75_lam10 --seed 0 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s1_rho0.75_lam10 --seed 1 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s2_rho0.75_lam10 --seed 2 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s0_rho0.95_lam10 --seed 0 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s1_rho0.95_lam10 --seed 1 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s2_rho0.95_lam10 --seed 2 --threads 2
+scripts/run_deletion.py --data reddit --model tgn_reddit_s0 --seed 0 --threads 2
+scripts/run_deletion.py --data reddit --model tgn_reddit_s1 --seed 1 --threads 2
+scripts/run_deletion.py --data reddit --model tgn_reddit_s2 --seed 2 --threads 2
+scripts/run_deletion.py --data mooc --model tgn_mooc_s0 --seed 0 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s0 --seed 10 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s0 --seed 11 --threads 2
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s0_nomem --seed 0 --threads 2 --methods none,store,exact

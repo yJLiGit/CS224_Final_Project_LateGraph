@@ -1,0 +1,69 @@
+{
+ "config": {
+  "data": "wikipedia",
+  "seed": 0,
+  "K": 500,
+  "epochs": 15,
+  "ft_epochs": 1,
+  "threads": 3,
+  "mrr_steps": 50,
+  "out": null
+ },
+ "candidates": 6046,
+ "pairs_A": 500,
+ "pairs_B": 500,
+ "events_A": 1969,
+ "events_B": 2220,
+ "train_minutes": {
+  "full": 6.3217853506406145,
+  "retrain": 5.519193851947785,
+  "finetune": 0.2819169839223226
+ },
+ "memory_repair": {
+  "recomputed": 75807,
+  "window_updates": 95368,
+  "history_updates": 95567,
+  "sec": 1.1183080673217773,
+  "max_abs_vs_rebuild": 3.2633543014526367e-06,
+  "single_pair": {
+   "cone_frac_median": 0.46615648087945283,
+   "recomputed_median": 27276.0,
+   "sec_median": 0.4627629518508911,
+   "visited_median": 335.5,
+   "window_steps_median": 426.0
+  }
+ },
+ "methods": {
+  "none": {
+   "logit": 0.5398919999999999,
+   "rank": 0.542598,
+   "probe": 0.51132,
+   "mrr": 0.6179382801055908
+  },
+  "store": {
+   "logit": 0.508564,
+   "rank": 0.5135339999999999,
+   "probe": 0.515972,
+   "mrr": 0.6179821491241455
+  },
+  "memory": {
+   "logit": 0.48919199999999996,
+   "rank": 0.49196,
+   "probe": 0.509312,
+   "mrr": 0.6221300959587097
+  },
+  "finetune": {
+   "logit": 0.486004,
+   "rank": 0.490364,
+   "probe": 0.535576,
+   "mrr": 0.584709644317627
+  },
+  "retrain": {
+   "logit": 0.49496000000000007,
+   "rank": 0.499,
+   "probe": 0.506172,
+   "mrr": 0.6325837969779968
+  }
+ },
+ "wall_sec": 788.456934928894
+}

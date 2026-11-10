@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "wikipedia",
+  "model": "tgn_wikipedia_s2_rho0.85_lam1",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 18141,
+  "J_own": {
+   "median": 0.725204348564148,
+   "p90": 0.7639070749282837,
+   "p99": 0.9084920287132263,
+   "max": 1.0245685577392578
+  },
+  "J_partner": {
+   "median": 0.253718763589859,
+   "p90": 0.2730890214443207,
+   "p99": 0.2913788855075836,
+   "max": 0.3382400870323181
+  },
+  "sum": {
+   "median": 0.9787365794181824,
+   "p90": 1.0173847675323486,
+   "p99": 1.1493717432022095,
+   "max": 1.2434262037277222
+  },
+  "certified_frac": 0.8028223361446447
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.052337776869535446,
+   "median_err": 0.0,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.1010063827713896,
+   "p90_bound_over_err": 1.505108953185212,
+   "max_local_rho": 1.2080634832382202,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.2434262037277222,
+   "skipped_frac": 0.08074534760073765
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.22623135149478912,
+   "median_err": 0.0519542321562767,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.0805304419903219,
+   "p90_bound_over_err": 2.311710222826742,
+   "max_local_rho": 1.224754810333252,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.2434262037277222,
+   "skipped_frac": 0.19220959626049297
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 0.9728742241859436,
+   "median_err": 0.043540121987462044,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.5079072345967837,
+   "p90_bound_over_err": 4.007587441855542,
+   "max_local_rho": 1.224754810333252,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.2434262037277222,
+   "skipped_frac": 0.23557032173633172
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 33.5966956615448,
+ "model_meta": {
+  "val_ap": 0.9520572635379936,
+  "lam": 1.0,
+  "rho": 0.85,
+  "cell_rho": null,
+  "updater": "gru"
+ }
+}

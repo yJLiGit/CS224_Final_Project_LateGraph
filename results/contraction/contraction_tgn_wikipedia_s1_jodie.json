@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "wikipedia",
+  "model": "tgn_wikipedia_s1_jodie",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 18141,
+  "J_own": {
+   "median": 1.3233903646469116,
+   "p90": 1.4656388759613037,
+   "p99": 1.79706871509552,
+   "max": 2.2515034675598145
+  },
+  "J_partner": {
+   "median": 0.9546856880187988,
+   "p90": 1.0559577941894531,
+   "p99": 1.2122172117233276,
+   "max": 1.450515627861023
+  },
+  "sum": {
+   "median": 2.278444528579712,
+   "p90": 2.5035321712493896,
+   "p99": 2.9895894527435303,
+   "max": 3.702019214630127
+  },
+  "certified_frac": 5.512375282509233e-05
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.11338245123624802,
+   "median_err": 0.0,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 269.71438301060346,
+   "p90_bound_over_err": 1007098.767429155,
+   "max_local_rho": 3.1490097045898438,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 3.702019214630127,
+   "skipped_frac": 0.047039106241880554
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.508854329586029,
+   "median_err": 0.2197631672024727,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 34.1795336963154,
+   "p90_bound_over_err": 550807.1657960645,
+   "max_local_rho": 3.201165199279785,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 3.702019214630127,
+   "skipped_frac": 0.17487875797122862
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 1.6171150207519531,
+   "median_err": 0.20518139749765396,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 43.4130127008429,
+   "p90_bound_over_err": 115961.95538082041,
+   "max_local_rho": 3.201165199279785,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 3.702019214630127,
+   "skipped_frac": 0.26769245958719645
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 24.268416166305542,
+ "model_meta": {
+  "val_ap": 0.9576689028118673,
+  "lam": 0.0,
+  "rho": 0.9,
+  "cell_rho": null,
+  "updater": "rnn"
+ }
+}

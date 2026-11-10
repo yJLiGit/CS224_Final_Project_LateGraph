@@ -1,0 +1,25 @@
+# Longer training (30 epochs; most 15-epoch models peak in their last epochs): does the leak change? Wikipedia, MOOC, 3 seeds
+scripts/train_tgn.py --data wikipedia --seed 0 --epochs 30 --threads 3 --suffix _ep30
+scripts/train_tgn.py --data wikipedia --seed 1 --epochs 30 --threads 3 --suffix _ep30
+scripts/train_tgn.py --data wikipedia --seed 2 --epochs 30 --threads 3 --suffix _ep30
+scripts/train_tgn.py --data mooc --seed 0 --epochs 30 --threads 3 --suffix _ep30
+scripts/train_tgn.py --data mooc --seed 1 --epochs 30 --threads 3 --suffix _ep30
+scripts/train_tgn.py --data mooc --seed 2 --epochs 30 --threads 3 --suffix _ep30
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s0_ep30 --epochs 5 --threads 2
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s0_ep30 --seed 0 --shadows 64 --threads 2 # needs: tgn_wikipedia_s0_ep30_restarter.pt
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s0_ep30 --seed 0 --threads 2 # needs: tgn_wikipedia_s0_ep30_restarter.pt
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s1_ep30 --epochs 5 --threads 2
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s1_ep30 --seed 1 --shadows 64 --threads 2 # needs: tgn_wikipedia_s1_ep30_restarter.pt
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s1_ep30 --seed 1 --threads 2 # needs: tgn_wikipedia_s1_ep30_restarter.pt
+scripts/train_restarter.py --data wikipedia --model tgn_wikipedia_s2_ep30 --epochs 5 --threads 2
+scripts/run_lira.py --data wikipedia --model tgn_wikipedia_s2_ep30 --seed 2 --shadows 64 --threads 2 # needs: tgn_wikipedia_s2_ep30_restarter.pt
+scripts/run_deletion.py --data wikipedia --model tgn_wikipedia_s2_ep30 --seed 2 --threads 2 # needs: tgn_wikipedia_s2_ep30_restarter.pt
+scripts/train_restarter.py --data mooc --model tgn_mooc_s0_ep30 --epochs 5 --threads 2
+scripts/run_lira.py --data mooc --model tgn_mooc_s0_ep30 --seed 0 --shadows 64 --threads 2 # needs: tgn_mooc_s0_ep30_restarter.pt
+scripts/run_deletion.py --data mooc --model tgn_mooc_s0_ep30 --seed 0 --threads 2 # needs: tgn_mooc_s0_ep30_restarter.pt
+scripts/train_restarter.py --data mooc --model tgn_mooc_s1_ep30 --epochs 5 --threads 2
+scripts/run_lira.py --data mooc --model tgn_mooc_s1_ep30 --seed 1 --shadows 64 --threads 2 # needs: tgn_mooc_s1_ep30_restarter.pt
+scripts/run_deletion.py --data mooc --model tgn_mooc_s1_ep30 --seed 1 --threads 2 # needs: tgn_mooc_s1_ep30_restarter.pt
+scripts/train_restarter.py --data mooc --model tgn_mooc_s2_ep30 --epochs 5 --threads 2
+scripts/run_lira.py --data mooc --model tgn_mooc_s2_ep30 --seed 2 --shadows 64 --threads 2 # needs: tgn_mooc_s2_ep30_restarter.pt
+scripts/run_deletion.py --data mooc --model tgn_mooc_s2_ep30 --seed 2 --threads 2 # needs: tgn_mooc_s2_ep30_restarter.pt

@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "lastfm",
+  "model": "tgn_lastfm_s2",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 184912,
+  "J_own": {
+   "median": 1.0571664571762085,
+   "p90": 1.1153650283813477,
+   "p99": 1.2115558385849,
+   "max": 1.403778314590454
+  },
+  "J_partner": {
+   "median": 0.5686204433441162,
+   "p90": 0.6415770053863525,
+   "p99": 0.697479784488678,
+   "max": 1.0776000022888184
+  },
+  "sum": {
+   "median": 1.6284711360931396,
+   "p90": 1.7448441982269287,
+   "p99": 1.8446686267852783,
+   "max": 2.476627826690674
+  },
+  "certified_frac": 0.0
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.08892782777547836,
+   "median_err": 0.054179659113287926,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 12.227988212664275,
+   "p90_bound_over_err": 245.32839257602677,
+   "max_local_rho": 2.2173995971679688,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.476627826690674,
+   "skipped_frac": 0.3670225225125487
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.4371081590652466,
+   "median_err": 0.16129383444786072,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 7.4008651441595745,
+   "p90_bound_over_err": 337.7665968645346,
+   "max_local_rho": 2.2786660194396973,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.476627826690674,
+   "skipped_frac": 0.5343792414391038
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 1.3696529865264893,
+   "median_err": 0.25466080009937286,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 27.379730602540093,
+   "p90_bound_over_err": 687.2535640685197,
+   "max_local_rho": 2.2786660194396973,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.476627826690674,
+   "skipped_frac": 0.8223675187789133
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 444.5579571723938,
+ "model_meta": {
+  "val_ap": 0.7636770925721162,
+  "lam": 0.0,
+  "rho": 0.9,
+  "cell_rho": null,
+  "updater": "gru"
+ }
+}

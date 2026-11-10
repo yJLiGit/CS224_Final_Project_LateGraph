@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "wikipedia",
+  "model": "tgn_wikipedia_s2_rho0.75_lam10",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 18141,
+  "J_own": {
+   "median": 0.6398030519485474,
+   "p90": 0.6674079895019531,
+   "p99": 0.7096600532531738,
+   "max": 0.9796860814094543
+  },
+  "J_partner": {
+   "median": 0.17592264711856842,
+   "p90": 0.1918400526046753,
+   "p99": 0.20836588740348816,
+   "max": 0.2390536665916443
+  },
+  "sum": {
+   "median": 0.814165472984314,
+   "p90": 0.839587926864624,
+   "p99": 0.8874756097793579,
+   "max": 1.130289077758789
+  },
+  "certified_frac": 0.9988975249434981
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.0454254075884819,
+   "median_err": 0.0,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.0,
+   "p90_bound_over_err": 1.716559553696377,
+   "max_local_rho": 1.0098836421966553,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.130289077758789,
+   "skipped_frac": 0.094117528391217
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.24542663991451263,
+   "median_err": 0.04454497806727886,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.0,
+   "p90_bound_over_err": 1.8330097065920536,
+   "max_local_rho": 1.1248050928115845,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.130289077758789,
+   "skipped_frac": 0.21030454499268117
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 0.9855822324752808,
+   "median_err": 0.015464342199265957,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.2484524600753057,
+   "p90_bound_over_err": 3.073762873864524,
+   "max_local_rho": 1.1248050928115845,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.130289077758789,
+   "skipped_frac": 0.2454202519768246
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 32.870128870010376,
+ "model_meta": {
+  "val_ap": 0.9459405940985285,
+  "lam": 10.0,
+  "rho": 0.75,
+  "cell_rho": null,
+  "updater": "gru"
+ }
+}

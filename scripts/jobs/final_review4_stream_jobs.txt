@@ -1,0 +1,3 @@
+# tgbl-review seeds 1-2: late events (run next to final_review4_jobs.txt)
+scripts/run_stream.py --data tgbl-review --model tgn_tgbl-review_s1 --delay rand --med 48 --seed 1 --threads 3 --max_steps 200 --max_queries 300 --methods oracle,exact,replay,eps:0.05,arrival,drop,buffer:24,buffer:96
+scripts/run_stream.py --data tgbl-review --model tgn_tgbl-review_s2 --delay rand --med 48 --seed 2 --threads 3 --max_steps 200 --max_queries 300 --methods oracle,exact,replay,eps:0.05,arrival,drop,buffer:24,buffer:96

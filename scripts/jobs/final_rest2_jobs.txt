@@ -1,0 +1,141 @@
+# remaining jobs, re-prioritised
+scripts/run_exactness.py --data tgbl-review --model tgn_tgbl-review_s0 --trials 1000 --threads 3
+scripts/run_deletion.py --data tgbl-review --model tgn_tgbl-review_s0 --seed 0 --threads 3 --no_rank --methods none,store,reset,exact,eps:0.05,replay
+scripts/run_lira.py --data tgbl-review --model tgn_tgbl-review_s0 --seed 0 --shadows 16 --threads 3 --methods store,reset,eps:0.05,exact
+scripts/run_stream.py --data tgbl-review --model tgn_tgbl-review_s0 --delay rand --med 48 --seed 0 --threads 3 --max_steps 200 --max_queries 300 --methods oracle,exact,replay,eps:0.05,arrival,drop,buffer:24,buffer:96
+scripts/run_stream.py --data sec --model tgn_sec_s0 --delay real --seed 0 --threads 2 --methods oracle,exact,replay,eps:0.05,eps:0.2,khop:1,arrival,arrival_logfix,drop,buffer:24,buffer:96
+scripts/run_stream.py --data sec --model tgn_sec_s1 --delay real --seed 1 --threads 2 --methods oracle,exact,replay,eps:0.05,eps:0.2,khop:1,arrival,arrival_logfix,drop,buffer:24,buffer:96
+scripts/run_stream.py --data sec --model tgn_sec_s2 --delay real --seed 2 --threads 2 --methods oracle,exact,replay,eps:0.05,eps:0.2,khop:1,arrival,arrival_logfix,drop,buffer:24,buffer:96
+scripts/run_stream.py --data sec --model tgn_sec_s3 --delay real --seed 3 --threads 2 --methods oracle,exact,replay,eps:0.05,eps:0.2,khop:1,arrival,arrival_logfix,drop,buffer:24,buffer:96
+scripts/run_stream.py --data sec --model tgn_sec_s4 --delay real --seed 4 --threads 2 --methods oracle,exact,replay,eps:0.05,eps:0.2,khop:1,arrival,arrival_logfix,drop,buffer:24,buffer:96
+scripts/run_stream.py --data sec --model tgn_sec_s0 --delay real --seed 0 --threads 2 --amend 0 --methods oracle,exact,eps:0.05,arrival,drop,buffer:96 --out tgn_sec_s0_real_noamend
+scripts/run_influence.py --data wikipedia --model tgn_wikipedia_s0 --queries 200 --C 20 --j0 0.9 --threads 2
+scripts/run_influence.py --data wikipedia --model tgn_wikipedia_s1 --queries 200 --C 20 --j0 0.9 --threads 2
+scripts/run_influence.py --data wikipedia --model tgn_wikipedia_s2 --queries 200 --C 20 --j0 0.9 --threads 2
+scripts/run_influence.py --data reddit --model tgn_reddit_s0 --queries 200 --C 20 --j0 0.9 --threads 2
+scripts/run_influence.py --data reddit --model tgn_reddit_s1 --queries 200 --C 20 --j0 0.9 --threads 2
+scripts/run_influence.py --data reddit --model tgn_reddit_s2 --queries 200 --C 20 --j0 0.9 --threads 2
+scripts/run_influence.py --data mooc --model tgn_mooc_s0 --queries 200 --C 20 --j0 0.9 --threads 2
+scripts/run_influence.py --data mooc --model tgn_mooc_s1 --queries 200 --C 20 --j0 0.9 --threads 2
+scripts/run_influence.py --data mooc --model tgn_mooc_s2 --queries 200 --C 20 --j0 0.9 --threads 2
+scripts/run_exactness.py --data lastfm --model tgn_lastfm_s0 --trials 2000 --threads 2
+scripts/run_exactness.py --data wikipedia --model tgn_wikipedia_s0_jodie --trials 2000 --threads 2 --out exactness_tgn_wikipedia_s0_jodie
+scripts/run_exactness.py --data wikipedia --model tgn_wikipedia_s0_crnn0.9 --trials 2000 --threads 2 --out exactness_tgn_wikipedia_s0_crnn0.9
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_id --delay rand --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_nomem --delay rand --seed 0 --threads 2 --methods oracle,exact,arrival,drop,buffer:1,buffer:4
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_rho0.75_lam10 --delay rand --seed 0 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_rho0.85_lam10 --delay rand --seed 0 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_rho0.95_lam10 --delay rand --seed 0 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_id --delay rand --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_nomem --delay rand --seed 1 --threads 2 --methods oracle,exact,arrival,drop,buffer:1,buffer:4
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_rho0.75_lam10 --delay rand --seed 1 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_rho0.85_lam10 --delay rand --seed 1 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_rho0.95_lam10 --delay rand --seed 1 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_id --delay rand --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_nomem --delay rand --seed 2 --threads 2 --methods oracle,exact,arrival,drop,buffer:1,buffer:4
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_rho0.75_lam10 --delay rand --seed 2 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_rho0.85_lam10 --delay rand --seed 2 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_rho0.95_lam10 --delay rand --seed 2 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3_id --delay rand --seed 3 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3_nomem --delay rand --seed 3 --threads 2 --methods oracle,exact,arrival,drop,buffer:1,buffer:4
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3_rho0.75_lam10 --delay rand --seed 3 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3_rho0.85_lam10 --delay rand --seed 3 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3_rho0.95_lam10 --delay rand --seed 3 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4_id --delay rand --seed 4 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4_nomem --delay rand --seed 4 --threads 2 --methods oracle,exact,arrival,drop,buffer:1,buffer:4
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4_rho0.75_lam10 --delay rand --seed 4 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4_rho0.85_lam10 --delay rand --seed 4 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4_rho0.95_lam10 --delay rand --seed 4 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_rho0.85_lam1 --delay rand --seed 0 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_rho0.85_lam100 --delay rand --seed 0 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_rho0.85_lam1 --delay rand --seed 1 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_rho0.85_lam100 --delay rand --seed 1 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_rho0.85_lam1 --delay rand --seed 2 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_rho0.85_lam100 --delay rand --seed 2 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_jodie --delay rand --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_jodie --delay rand --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_jodie --delay rand --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3_jodie --delay rand --seed 3 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4_jodie --delay rand --seed 4 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s0_jodie --delay rand --seed 0 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s1_jodie --delay rand --seed 1 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s2_jodie --delay rand --seed 2 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s3_jodie --delay rand --seed 3 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s4_jodie --delay rand --seed 4 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s0_jodie --delay rand --seed 0 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s1_jodie --delay rand --seed 1 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s2_jodie --delay rand --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_crnn0.9 --delay rand --seed 0 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_crnn0.9 --delay rand --seed 1 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_crnn0.9 --delay rand --seed 2 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3_crnn0.9 --delay rand --seed 3 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4_crnn0.9 --delay rand --seed 4 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_crnn0.8 --delay rand --seed 0 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_crnn0.8 --delay rand --seed 1 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_crnn0.8 --delay rand --seed 2 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3_crnn0.8 --delay rand --seed 3 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4_crnn0.8 --delay rand --seed 4 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0_crnn0.95 --delay rand --seed 0 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1_crnn0.95 --delay rand --seed 1 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2_crnn0.95 --delay rand --seed 2 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3_crnn0.95 --delay rand --seed 3 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4_crnn0.95 --delay rand --seed 4 --threads 2 --methods oracle,exact,eps:0.01,eps:0.05,eps:0.2,arrival,drop,buffer:1
+scripts/run_stream.py --data reddit --model tgn_reddit_s0_crnn0.9 --delay rand --seed 0 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s1_crnn0.9 --delay rand --seed 1 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s2_crnn0.9 --delay rand --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1 --delay rand --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2 --delay rand --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3 --delay rand --seed 3 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4 --delay rand --seed 4 --threads 2
+scripts/run_stream.py --data lastfm --model tgn_lastfm_s0 --delay rand --seed 0 --threads 2
+scripts/run_stream.py --data lastfm --model tgn_lastfm_s1 --delay rand --seed 1 --threads 2
+scripts/run_stream.py --data lastfm --model tgn_lastfm_s2 --delay rand --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0 --delay burst --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1 --delay active --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1 --delay burst --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2 --delay active --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2 --delay burst --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3 --delay active --seed 3 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3 --delay burst --seed 3 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4 --delay active --seed 4 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4 --delay burst --seed 4 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0 --delay rand --bq 50 --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1 --delay rand --bq 50 --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2 --delay rand --bq 50 --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s3 --delay rand --bq 50 --seed 3 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s4 --delay rand --bq 50 --seed 4 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s0 --delay rand --bq 50 --seed 0 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s1 --delay rand --bq 50 --seed 1 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s2 --delay rand --bq 50 --seed 2 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s3 --delay rand --bq 50 --seed 3 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s4 --delay rand --bq 50 --seed 4 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0 --delay rand --seed 0 --threads 2 --methods oracle,exact,exact@5,exact@10,exact@20,exact@50,eps:0.05@20,arrival --out horizon_tgn_wikipedia_s0_rand
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1 --delay rand --seed 1 --threads 2 --methods oracle,exact,exact@5,exact@10,exact@20,exact@50,eps:0.05@20,arrival --out horizon_tgn_wikipedia_s1_rand
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2 --delay rand --seed 2 --threads 2 --methods oracle,exact,exact@5,exact@10,exact@20,exact@50,eps:0.05@20,arrival --out horizon_tgn_wikipedia_s2_rand
+scripts/run_stream.py --data mooc --model tgn_mooc_s0 --delay rand --seed 0 --threads 2 --methods oracle,exact,exact@5,exact@10,exact@20,exact@50,eps:0.05@20,arrival --out horizon_tgn_mooc_s0_rand
+scripts/run_stream.py --data mooc --model tgn_mooc_s1 --delay rand --seed 1 --threads 2 --methods oracle,exact,exact@5,exact@10,exact@20,exact@50,eps:0.05@20,arrival --out horizon_tgn_mooc_s1_rand
+scripts/run_stream.py --data mooc --model tgn_mooc_s2 --delay rand --seed 2 --threads 2 --methods oracle,exact,exact@5,exact@10,exact@20,exact@50,eps:0.05@20,arrival --out horizon_tgn_mooc_s2_rand
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0 --delay offline --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s0 --delay itemshard --seed 0 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1 --delay offline --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s1 --delay itemshard --seed 1 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2 --delay offline --seed 2 --threads 2
+scripts/run_stream.py --data wikipedia --model tgn_wikipedia_s2 --delay itemshard --seed 2 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s0 --delay offline --seed 0 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s0 --delay itemshard --seed 0 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s1 --delay offline --seed 1 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s1 --delay itemshard --seed 1 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s2 --delay offline --seed 2 --threads 2
+scripts/run_stream.py --data mooc --model tgn_mooc_s2 --delay itemshard --seed 2 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s0 --delay offline --seed 0 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s0 --delay itemshard --seed 0 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s1 --delay offline --seed 1 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s1 --delay itemshard --seed 1 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s2 --delay offline --seed 2 --threads 2
+scripts/run_stream.py --data reddit --model tgn_reddit_s2 --delay itemshard --seed 2 --threads 2
+scripts/run_stream.py --data lastfm --model tgn_lastfm_s0 --delay active --seed 0 --threads 2
+scripts/run_stream.py --data lastfm --model tgn_lastfm_s0 --delay burst --seed 0 --threads 2
+scripts/run_stream.py --data lastfm --model tgn_lastfm_s1 --delay active --seed 1 --threads 2
+scripts/run_stream.py --data lastfm --model tgn_lastfm_s1 --delay burst --seed 1 --threads 2
+scripts/run_stream.py --data lastfm --model tgn_lastfm_s2 --delay active --seed 2 --threads 2
+scripts/run_stream.py --data lastfm --model tgn_lastfm_s2 --delay burst --seed 2 --threads 2

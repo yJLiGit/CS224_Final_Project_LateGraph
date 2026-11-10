@@ -1,0 +1,7 @@
+{
+ "model": "tgn_reddit_s4",
+ "epochs": 5,
+ "mse": 0.0563,
+ "memory_variance": 0.5008,
+ "explained_variance": 0.8875798722044729
+}

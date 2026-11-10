@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "mooc",
+  "model": "tgn_mooc_s3",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 35109,
+  "J_own": {
+   "median": 1.2366347312927246,
+   "p90": 1.4087640047073364,
+   "p99": 1.536192536354065,
+   "max": 1.6820498704910278
+  },
+  "J_partner": {
+   "median": 0.6252016425132751,
+   "p90": 1.5206849575042725,
+   "p99": 1.830541729927063,
+   "max": 2.110560894012451
+  },
+  "sum": {
+   "median": 1.8715355396270752,
+   "p90": 2.907747983932495,
+   "p99": 3.267617702484131,
+   "max": 3.7110304832458496
+  },
+  "certified_frac": 0.0
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.07083773612976074,
+   "median_err": 0.05013654753565788,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 64242.85105522627,
+   "p90_bound_over_err": 229288780.7782793,
+   "max_local_rho": 3.6884002685546875,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 3.7110304832458496,
+   "skipped_frac": 0.24960262143309941
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.34790024161338806,
+   "median_err": 0.14794472604990005,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 15114.279588852867,
+   "p90_bound_over_err": 411533979.7842262,
+   "max_local_rho": 3.679687023162842,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 3.7110304832458496,
+   "skipped_frac": 0.3680838752378406
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 1.1930278539657593,
+   "median_err": 0.20640387386083603,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 81694.58977698517,
+   "p90_bound_over_err": 2465120965.669121,
+   "max_local_rho": 3.679687023162842,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 3.7110304832458496,
+   "skipped_frac": 0.4891086191929845
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 269.1772780418396,
+ "model_meta": {
+  "val_ap": 0.8503375819511161,
+  "lam": 0.0,
+  "rho": 0.9,
+  "cell_rho": null,
+  "updater": "gru"
+ }
+}

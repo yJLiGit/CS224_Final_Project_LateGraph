@@ -1,0 +1,5 @@
+scripts/run_stream.py --data sec --model tgn_sec_s0 --delay real --seed 0 --threads 2 --methods oracle,exact,replay,eps:0.05,eps:0.2,khop:1,arrival,arrival_logfix,drop,buffer:24,buffer:96
+scripts/run_stream.py --data sec --model tgn_sec_s1 --delay real --seed 1 --threads 2 --methods oracle,exact,replay,eps:0.05,eps:0.2,khop:1,arrival,arrival_logfix,drop,buffer:24,buffer:96
+scripts/run_stream.py --data sec --model tgn_sec_s2 --delay real --seed 2 --threads 2 --methods oracle,exact,replay,eps:0.05,eps:0.2,khop:1,arrival,arrival_logfix,drop,buffer:24,buffer:96
+scripts/run_stream.py --data sec --model tgn_sec_s0 --delay real --seed 0 --threads 2 --amend 0 --methods oracle,exact,eps:0.05,arrival,drop,buffer:96 --out tgn_sec_s0_real_noamend
+scripts/run_contraction.py --data sec --model tgn_sec_s0 --trials 50 --threads 2

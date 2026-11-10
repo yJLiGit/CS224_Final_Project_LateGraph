@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "wikipedia",
+  "model": "tgn_wikipedia_s4_rho0.75_lam10",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 18141,
+  "J_own": {
+   "median": 0.6573020219802856,
+   "p90": 0.6811507344245911,
+   "p99": 0.7234996557235718,
+   "max": 0.986016571521759
+  },
+  "J_partner": {
+   "median": 0.1650911569595337,
+   "p90": 0.17901381850242615,
+   "p99": 0.19315658509731293,
+   "max": 0.2168371081352234
+  },
+  "sum": {
+   "median": 0.821470320224762,
+   "p90": 0.8438212871551514,
+   "p99": 0.8910680413246155,
+   "max": 1.1536582708358765
+  },
+  "certified_frac": 0.9988975249434981
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.05535693094134331,
+   "median_err": 0.0,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.0,
+   "p90_bound_over_err": 1.5722795083201753,
+   "max_local_rho": 1.005805253982544,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.1536582708358765,
+   "skipped_frac": 0.0971536522787362
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.23807421326637268,
+   "median_err": 0.0395559873431921,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.0753409605881097,
+   "p90_bound_over_err": 2.1409240098775113,
+   "max_local_rho": 1.1536582708358765,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.1536582708358765,
+   "skipped_frac": 0.2187875967177345
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 0.9055461883544922,
+   "median_err": 0.01658376818522811,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.2581166575524876,
+   "p90_bound_over_err": 3.100560358522062,
+   "max_local_rho": 1.1536582708358765,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.1536582708358765,
+   "skipped_frac": 0.24021639647772378
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 32.745660066604614,
+ "model_meta": {
+  "val_ap": 0.9464176906150699,
+  "lam": 10.0,
+  "rho": 0.75,
+  "cell_rho": null,
+  "updater": "gru"
+ }
+}

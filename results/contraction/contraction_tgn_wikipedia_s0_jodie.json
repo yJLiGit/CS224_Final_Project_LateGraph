@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "wikipedia",
+  "model": "tgn_wikipedia_s0_jodie",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 18141,
+  "J_own": {
+   "median": 1.3215337991714478,
+   "p90": 1.5368297100067139,
+   "p99": 1.7759820222854614,
+   "max": 2.2799646854400635
+  },
+  "J_partner": {
+   "median": 0.968166172504425,
+   "p90": 1.1315891742706299,
+   "p99": 1.295974612236023,
+   "max": 1.6324553489685059
+  },
+  "sum": {
+   "median": 2.289212942123413,
+   "p90": 2.6235570907592773,
+   "p99": 3.0335280895233154,
+   "max": 3.9124200344085693
+  },
+  "certified_frac": 5.512375282509233e-05
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.15661223232746124,
+   "median_err": 0.0,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 247.74598084658427,
+   "p90_bound_over_err": 408209.83083478065,
+   "max_local_rho": 3.462203025817871,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 3.9124200344085693,
+   "skipped_frac": 0.0628815237084314
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.5793113708496094,
+   "median_err": 0.1493472456932068,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 284.37674792659453,
+   "p90_bound_over_err": 378251.9575541431,
+   "max_local_rho": 3.493227005004883,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 3.9124200344085693,
+   "skipped_frac": 0.18273773724383222
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 1.7318156957626343,
+   "median_err": 0.13652625679969788,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 42.521149043553116,
+   "p90_bound_over_err": 167764.97412874136,
+   "max_local_rho": 3.493227005004883,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 3.9124200344085693,
+   "skipped_frac": 0.28132464100227256
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 24.467036962509155,
+ "model_meta": {
+  "val_ap": 0.9576781815670276,
+  "lam": 0.0,
+  "rho": 0.9,
+  "cell_rho": null,
+  "updater": "rnn"
+ }
+}

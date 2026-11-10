@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "wikipedia",
+  "model": "tgn_wikipedia_s0_rho0.75_lam10",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 18141,
+  "J_own": {
+   "median": 0.6549131274223328,
+   "p90": 0.6798860430717468,
+   "p99": 0.7247239947319031,
+   "max": 0.9589108824729919
+  },
+  "J_partner": {
+   "median": 0.16222207248210907,
+   "p90": 0.17624279856681824,
+   "p99": 0.18995100259780884,
+   "max": 0.222697913646698
+  },
+  "sum": {
+   "median": 0.8152095079421997,
+   "p90": 0.8392000794410706,
+   "p99": 0.8886435031890869,
+   "max": 1.1133499145507812
+  },
+  "certified_frac": 0.9988975249434981
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.057632289826869965,
+   "median_err": 0.0,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.0,
+   "p90_bound_over_err": 1.5186463907886145,
+   "max_local_rho": 0.9607566595077515,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.1133499145507812,
+   "skipped_frac": 0.1027079225315248
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.2828826904296875,
+   "median_err": 0.04690195806324482,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.0174570554383613,
+   "p90_bound_over_err": 1.6783360826249087,
+   "max_local_rho": 1.1133499145507812,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.1133499145507812,
+   "skipped_frac": 0.22505350388883702
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 0.9743428826332092,
+   "median_err": 0.01567122619599104,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1.3937783798206955,
+   "p90_bound_over_err": 2.981735901991679,
+   "max_local_rho": 1.1133499145507812,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 1.1133499145507812,
+   "skipped_frac": 0.2429320406363293
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 33.06749701499939,
+ "model_meta": {
+  "val_ap": 0.945739454073139,
+  "lam": 10.0,
+  "rho": 0.75,
+  "cell_rho": null,
+  "updater": "gru"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "model": "tgn_wikipedia_s4_id",
+ "epochs": 5,
+ "mse": 0.0508,
+ "memory_variance": 0.236,
+ "explained_variance": 0.7847457627118644
+}

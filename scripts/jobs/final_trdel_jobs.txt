@@ -1,0 +1,12 @@
+# deletions of training-period events: trains two TGNs per seed (with and without the deleted pairs) + fine-tuning
+scripts/run_train_deletion.py --data wikipedia --seed 0 --K 500 --threads 3
+scripts/run_train_deletion.py --data wikipedia --seed 1 --K 500 --threads 3
+scripts/run_train_deletion.py --data wikipedia --seed 2 --K 500 --threads 3
+scripts/run_train_deletion.py --data wikipedia --seed 3 --K 500 --threads 3
+scripts/run_train_deletion.py --data wikipedia --seed 4 --K 500 --threads 3
+scripts/run_train_deletion.py --data mooc --seed 0 --K 500 --threads 3
+scripts/run_train_deletion.py --data mooc --seed 1 --K 500 --threads 3
+scripts/run_train_deletion.py --data mooc --seed 2 --K 500 --threads 3
+scripts/run_train_deletion.py --data reddit --seed 0 --K 500 --threads 3
+scripts/run_train_deletion.py --data reddit --seed 1 --K 500 --threads 3
+scripts/run_train_deletion.py --data reddit --seed 2 --K 500 --threads 3

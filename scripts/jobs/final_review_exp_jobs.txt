@@ -1,0 +1,5 @@
+# tgbl-review experiments (wait for the trained TGN): exactness and cone size at scale, the deletion leak, late events with daily steps
+scripts/run_exactness.py --data tgbl-review --model tgn_tgbl-review_s0 --trials 1000 --threads 3
+scripts/run_deletion.py --data tgbl-review --model tgn_tgbl-review_s0 --seed 0 --threads 3 --no_rank --methods none,store,reset,exact,eps:0.05,replay
+scripts/run_lira.py --data tgbl-review --model tgn_tgbl-review_s0 --seed 0 --shadows 16 --threads 3 --methods store,reset,eps:0.05,exact
+scripts/run_stream.py --data tgbl-review --model tgn_tgbl-review_s0 --delay rand --med 48 --seed 0 --threads 3 --max_steps 200 --max_queries 300 --methods oracle,exact,replay,eps:0.05,arrival,drop,buffer:24,buffer:96

@@ -1,0 +1,80 @@
+{
+ "config": {
+  "data": "reddit",
+  "model": "tgn_reddit_s1",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 129792,
+  "J_own": {
+   "median": 1.2313826084136963,
+   "p90": 1.33246910572052,
+   "p99": 1.4261521100997925,
+   "max": 1.7247382402420044
+  },
+  "J_partner": {
+   "median": 0.7200325727462769,
+   "p90": 0.832282543182373,
+   "p99": 0.9214290380477905,
+   "max": 1.0886424779891968
+  },
+  "sum": {
+   "median": 1.956310510635376,
+   "p90": 2.1264894008636475,
+   "p99": 2.2729713916778564,
+   "max": 2.6371138095855713
+  },
+  "certified_frac": 0.0
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.10629432648420334,
+   "median_err": 0.053872453048825264,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 2701.3736643596008,
+   "p90_bound_over_err": 3914187.9391276133,
+   "max_local_rho": 2.4990956783294678,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.6371138095855713,
+   "skipped_frac": 0.22878788870032937
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.38726064562797546,
+   "median_err": 0.2690073996782303,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 1150.1791453971723,
+   "p90_bound_over_err": 3211661.4888197086,
+   "max_local_rho": 2.4990956783294678,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.6371138095855713,
+   "skipped_frac": 0.400140376615799
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 1.5163394212722778,
+   "median_err": 0.6679676473140717,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 410.58257479281235,
+   "p90_bound_over_err": 21871704.849119663,
+   "max_local_rho": 2.4990956783294678,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 2.6371138095855713,
+   "skipped_frac": 0.632646965587072
+  }
+ },
+ "certified_repair": {},
+ "wall_sec": 219.90443086624146,
+ "model_meta": {
+  "val_ap": 0.9866969004811292,
+  "lam": 0.0,
+  "rho": 0.9,
+  "cell_rho": null,
+  "updater": "gru"
+ }
+}

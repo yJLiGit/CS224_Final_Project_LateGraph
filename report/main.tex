@@ -1,0 +1,421 @@
+\documentclass{article}
+
+% CS 224W milestone: NeurIPS style is fine, no page limit, keep it concise.
+\PassOptionsToPackage{numbers,compress}{natbib}
+\usepackage[preprint]{neurips_2022}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black}
+\setlength{\textfloatsep}{9pt}
+\setlength{\intextsep}{7pt}
+\setlist{nosep,leftmargin=1.2em}
+
+\makeatletter
+\renewcommand{\@noticestring}{CS 224W (Fall 2026) project milestone. Project type 1: real-world application of GNNs.}
+\makeatother
+
+% every number below is a macro written by scripts/make_numbers_final.py from the per-run results (never typed by hand)
+\input{numbers.tex}
+% ------------------------------------------------------------------------------------------------------------
+% The public link to the code (GitHub repository with the Colab notebook). Replace it before submitting.
+\newcommand{\CodeURL}{https://github.com/YOUR-ACCOUNT/lategraph}
+% ------------------------------------------------------------------------------------------------------------
+
+\definecolor{cgray}{HTML}{8A8A8A}\definecolor{cred}{HTML}{C0392B}\definecolor{corange}{HTML}{E08E0B}
+\definecolor{cgreen}{HTML}{2A9D8F}\definecolor{cblue}{HTML}{2A6FDB}
+\lstset{language=Python,basicstyle=\ttfamily\scriptsize,keywordstyle=\color{blue!60!black},commentstyle=\color{gray},
+  frame=single,framerule=0.3pt,rulecolor=\color{gray!60},xleftmargin=2pt,xrightmargin=2pt,aboveskip=4pt,belowskip=2pt,
+  columns=fullflexible,keepspaces=true,showstringspaces=false}
+
+\title{LateGraph: Forgetting and Repairing the Past\\ in Temporal Graph Networks\\[3pt]
+\normalsize Project milestone}
+
+\author{%
+  Yijin Li\\ \texttt{yjli88@stanford.edu}
+  \And
+  Lexi Zhou\\ \texttt{lexi-zhou@stanford.edu}
+}
+
+\begin{document}
+\maketitle
+
+\vspace{-1.5em}
+\paragraph{Where we are.} Everything planned for the milestone is built and runs end to end in PyG, and most of what we
+planned for the final is done too: six datasets (including the 4.9M-event tgbl-review), three memory models, 3--5 seeds,
+and a membership attack with counterfactual shadow streams. Code and a Colab notebook: \url{\CodeURL}.
+\begin{itemize}
+\item \textbf{Deleting from the log does not delete from the memory.} After a deletion request, a likelihood-ratio
+  attack that observes the model's scores (knowing the weights and the other events) separates deleted from never-seen
+  interactions with AUC \LiraQStoreWiki{} on Wikipedia, \LiraQStoreReddit{} on Reddit and \LiraQStoreReview{} on tgbl-review,
+  while the score alone gives \RawStoreWiki{} on Wikipedia. The leak is unchanged 50 steps after the request, and resetting
+  or regenerating the memories does not remove it (\S\ref{sec:del}).
+\item \textbf{Exact repair is exact.} Recomputing only the edit's dependency cone returns the memory of the corrected
+  stream to within \ExMaxAll{} in float32 over \ExTotalAll{} random edits on five datasets, bit for bit in float64, and at
+  chance against every attack (\S\ref{sec:exact}).
+\item \textbf{Repair is fast for recent edits only.} For an edit that changes the memory, a step index makes repair
+  \BenchSpeedEffWiki$\times$ faster than replay on Wikipedia and \BenchSpeedEffReddit$\times$ on Reddit; on hub-heavy MOOC
+  and LastFM, and for old edits, the cone covers most later updates and replay is as fast (\S\ref{sec:exact}).
+\item \textbf{Cheap repair can be certified.} A memory cell that contracts for every input makes our error bound for
+  approximate repair a theorem (it held in every trial), at a cost of \MrrLossNineCell{} MRR points (\S\ref{sec:cert}).
+\item \textbf{Late events barely matter for accuracy.} Applying them in arrival order is within the seed spread of exact
+  repair, also on SEC Form~4 with real delays and \SecAmend{} real amendments; waiting with a buffer costs accuracy
+  (\S\ref{sec:late}).
+\end{itemize}
+
+% =========================================================================================================
+\section{The problem}
+\label{sec:problem}
+
+Streaming recommenders and transaction monitors use memory-based temporal GNNs such as TGN \citep{rossi2020tgn},
+JODIE \citep{kumar2019jodie} and DyRep \citep{trivedi2019dyrep}. They keep one memory vector per node and update it at
+every interaction, which is what makes them fast. Real event logs, however, change after the fact: an insider trade
+reaches the SEC days after it happened, a filing is amended (Form~4/A), a payment is reversed, a user asks for their
+data to be deleted. Each of these edits belongs \emph{in the past}, before updates the model has already made. Because
+every update reads the memories it touches, one edit changes every later update that read a changed memory: the edit's
+\emph{dependency cone} (Fig.~\ref{fig:concept}). The GRU in the update cannot be inverted, so the cone has to be
+recomputed. Our target is the memory $S^\star(\tau)$ the model would hold at time $\tau$ had it processed every received
+event in the order it happened. After a deletion, $S^\star$ is the memory of a model that never saw the deleted events, so
+the question is also a privacy question: does deleting a row from the log make the model forget it?
+
+\begin{figure}[t]
+\centering
+\begin{minipage}[b]{0.47\linewidth}\centering
+\begin{tikzpicture}[x=0.80cm,y=0.62cm,font=\scriptsize]
+ \node[anchor=east,align=right] at (0.25,2.4) {happened\\[-1pt]($t_e$)};
+ \node[anchor=east,align=right] at (0.25,0) {arrived\\[-1pt]($a_e$)};
+ \draw[gray!60] (0.3,2.4)--(6.9,2.4); \draw[gray!60] (0.3,0)--(6.9,0);
+ \foreach \n/\t/\a in {A/0.7/0.9, B/1.7/2.0, C/3.6/3.8, D/4.6/4.8} {
+   \draw[cblue!60] (\t,2.4)--(\a,0); \fill[cblue] (\t,2.4) circle (3.4pt) (\a,0) circle (3.4pt);
+   \node[white,font=\tiny\bfseries] at (\t,2.4) {\n}; \node[white,font=\tiny\bfseries] at (\a,0) {\n};}
+ \draw[cred,thick,dashed] (2.65,2.4)--(6.45,0); \fill[cred] (2.65,2.4) circle (3.4pt) (6.45,0) circle (3.4pt);
+ \node[white,font=\tiny\bfseries] at (2.65,2.4) {L}; \node[white,font=\tiny\bfseries] at (6.45,0) {L};
+ \draw[corange,very thick] (5.55,-0.45)--(5.55,2.85) node[above,font=\scriptsize]{query at $\tau$};
+ \node[text=cred,align=center,font=\scriptsize] at (3.4,-0.95) {L happened before C and D, but arrives after them};
+\end{tikzpicture}\\[2pt]{\footnotesize (a) two clocks per event}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.50\linewidth}\centering
+\begin{tikzpicture}[x=0.8cm,y=0.52cm,font=\scriptsize]
+ \foreach \y/\l in {3/$u_1$,2/$i_1$,1/$u_2$,0/$i_2$} {\draw[gray!55] (0.25,\y)--(7.4,\y); \node[anchor=east] at (0.25,\y) {\l};}
+ \draw[-{Latex[length=1.3mm]}] (0.25,-0.85)--(7.45,-0.85) node[anchor=north east,yshift=-1pt] {occurrence time};
+ \foreach \x/\a/\b in {0.8/3/2, 2.3/1/2, 6.6/3/1} {\draw[cgreen,thick] (\x,\a)--(\x,\b); \fill[cgreen] (\x,\a) circle (2pt) (\x,\b) circle (2pt);}
+ \draw[cred,very thick,dashed] (1.5,3)--(1.5,0); \fill[cred] (1.5,3) circle (2.4pt) (1.5,0) circle (2.4pt);
+ \node[cred,anchor=south,inner sep=1pt] at (1.5,3.2) {edit $e^\star$};
+ \foreach \x/\a/\b in {3.0/3/2, 3.8/1/0, 4.6/1/2} {\draw[corange,very thick] (\x,\a)--(\x,\b); \fill[corange] (\x,\a) circle (2.2pt) (\x,\b) circle (2.2pt);}
+ \node[corange!85!black,anchor=south,inner sep=1pt] at (3.8,3.2) {cone: recompute};
+ \draw[corange!60,thick,densely dotted] (5.5,2)--(5.5,0); \draw[corange,fill=white] (5.5,2) circle (2.2pt); \draw[corange,fill=white] (5.5,0) circle (2.2pt);
+ \node[corange!85!black,anchor=west,align=left,inner sep=1pt,font=\tiny] at (5.6,0.5) {change $<\varepsilon$:\\stop};
+ \node[cgreen!80!black,anchor=south,inner sep=1pt] at (6.6,3.2) {reuse};
+\end{tikzpicture}\\[2pt]{\footnotesize (b) the dependency cone of one edit}
+\end{minipage}
+\caption{(a) Every event has an occurrence time and an arrival time. At query time $\tau$ the late event L has not
+arrived, and when it does, C and D have already been applied without it. (b) Lines are nodes; vertical links are events,
+each updating both endpoints. An edit $e^\star$ (late insertion, deletion or amendment) changes every later update that
+reads a changed memory (orange). Exact repair recomputes only these, in time order, and copies everything else from a
+journal of saved memories (green); $\varepsilon$-repair stops where the change becomes small.}
+\label{fig:concept}
+\end{figure}
+
+
+% =========================================================================================================
+\section{What changed since the proposal}
+\label{sec:changes}
+
+\textbf{Done as planned:} the retroactive memory, the time-ordered neighbour store, edit generators, the SEC graph, and
+repair against all baselines, including a StreamTGN-style rebuild \citep{zhang2026streamtgn} and a TIGER-style learned
+restart \citep{zhang2023tiger}. \textbf{Changed or added:}
+\begin{itemize}
+\item \emph{The go/no-go test from the proposal feedback moved our emphasis to deletion.} Full replay is costly and
+  buffering is not a cheap fix, but applying late events in arrival order loses almost nothing, so for late events alone
+  there is little accuracy to win back. The weight moved to edits that must be honoured exactly, above all deletions,
+  where we found the memory leak.
+\item \emph{A stronger, calibrated attack.} Besides the model's own score and a probe on the memories, a likelihood-ratio
+  attack (LiRA \citep{carlini2022lira}) with counterfactual shadow streams, which we also weaken (partial knowledge of the
+  other events, later attacks, fewer candidate pairs) to see how strong an attacker must be.
+\item \emph{More models and data:} DyRep (whose update reads the partner's neighbourhood), JODIE, LastFM and tgbl-review
+  from TGB \citep{huang2023tgb}; 5 seeds on Wikipedia and Reddit, 3 elsewhere.
+\item \emph{A step index} so that repair visits only the steps the cone touches, and an honest account of when it pays
+  off (recent edits) and when replay is as fast (old edits on hub-heavy graphs).
+\item \emph{A rigorous certificate.} The contraction penalty of the proposal only bounds measured Jacobians; a memory cell
+  that contracts by construction makes the error bound hold for every input and enables $\delta$-certified repair.
+\item \emph{Deletions of training-period events} (where the weights saw the data too), compared with retraining.
+\item \emph{Exact counterfactual explanations:} the effect of deleting any past event on a prediction, compared with
+  attention weights.
+\item \emph{Not done:} GraphMixer (our memory-free control is a one-layer TGAT-style model) and shadow-model attacks on the
+  weights.
+\end{itemize}
+
+% =========================================================================================================
+\section{Data and processing}
+\label{sec:data}
+
+\input{generated/tab_data}
+
+\textbf{JODIE and TGB.} We load Wikipedia, Reddit, MOOC and LastFM with PyG's \texttt{JODIEDataset} and split by time
+70/15/15, as \texttt{TemporalData.train\_val\_test\_split}; tgbl-review comes from the TGB mirror on Hugging Face with TGB's
+own split. These datasets have one clock, so test events get arrival times from five delay models with a known ground
+truth: \emph{random} (20\% of events late, log-normal delay with a 2-hour median), \emph{active users}, \emph{outage
+bursts}, \emph{offline users} and a \emph{slow item shard} (Appendix~\ref{app:details}). The test stream is processed in
+steps of 200 events (one day for tgbl-review); an event can be used from the first step after it arrives.
+
+\textbf{SEC Form~4.} We use the point-in-time view of the ZipLime insider-trading data \citep{ziplime2026form4}
+(Apache-2.0, built from SEC EDGAR), pinned to one revision. A transaction is an edge from the reporting insider to the
+issuer; its occurrence time is the trade date and its arrival time the EDGAR acceptance time; edge features (25-dim)
+encode the transaction code, size, price, derivative flag, role and 10b5-1 plan. A Form~4/A row supersedes an earlier row:
+at its arrival, the old version is deleted and the new one inserted (\SecAmend{} amendments in the test period). In the test
+period \SecLate\% of transactions arrive after the day they happened, the median delay is \SecLagMed{} days, the 99th
+percentile \SecLagNinetyNine{} days, and \SecLagFour\% are filed more than 4 days after the trade (the legal deadline is two
+business days). To our knowledge no public temporal graph benchmark has real arrival times; we will publish this one.
+
+% =========================================================================================================
+\section{Model, repair, attacks and metrics}
+\label{sec:model}
+
+\textbf{Model.} PyG's TGN \citep{rossi2020tgn} as in \texttt{examples/tgn.py}: \texttt{TGNMemory} with identity messages and
+last-message aggregation, a \texttt{TransformerConv} embedding over each node's last 10 neighbours and an MLP decoder (size
+100; batch 200; Adam $10^{-4}$; 15 epochs). When event $e=(u,v,x_e,t_e)$ is processed, endpoint $u$ is updated by
+\begin{equation}
+s_u \leftarrow F(s_u, s_v, e, \tau_u) = \mathrm{GRU}\big([\,s_u\,\|\,s_v\,\|\,x_e\,\|\,\phi(t_e-\tau_u)\,],\; s_u\big),
+\label{eq:tgn}
+\end{equation}
+where $\tau_u$ is $u$'s previous update time and $\phi$ a learned time encoding; within a step every update reads the memory
+from before the step. JODIE uses an RNN memory and a time projection; DyRep's update also attends over the partner's
+neighbours, so it reads their memories too.
+
+\textbf{Exact repair.} \texttt{RetroactiveTGNMemory} subclasses \texttt{TGNMemory}, loads the trained weights and keeps a
+\emph{journal}: for every update the node, the event, the partner and the memory before and after. After an edit at step
+$k_0$ it walks forward and recomputes an update if its event changed or if it reads a memory that differs from the journal
+(the cone); every other result is copied. Updates outside the cone see identical inputs, so this returns exactly
+$S^\star$, provided the update is batch-invariant: BLAS uses another kernel for single-row products, which in float32
+changes the time encoding of multi-day gaps by up to 0.06, so we pad single-row updates (Appendix~\ref{app:fp}). A
+\emph{step index} (the steps where each node is updated) lets repair visit only the steps that read a changed memory.
+\begin{lstlisting}
+mem = RetroactiveTGNMemory.from_trained(tgn.memory, events)   # same weights as the trained TGNMemory
+mem.warmup(0, stream.test0)                                    # history, in order
+mem.advance(step_events)                                       # one step of the stream (journaled)
+mem.edit(insert=late_events, delete=deleted_events)            # change the past (amendment = both)
+stats = mem.repair("exact")                                    # or "eps" (eps=0.05), "replay", "khop"
+z, last_update = mem(n_id)                                     # as TGNMemory in eval mode
+\end{lstlisting}
+
+\textbf{Cheaper repair with a bound.} \emph{$\varepsilon$-repair} keeps the old memory where the recomputed one differs by at
+most $\varepsilon\,\|s^{\text{old}}\|$. If every update shrinks memory differences by a factor $\rho<1$, the error stays below
+$r/(1-\rho)$, and a per-node bound $b_n\leftarrow\rho\max(b_n,b_o)+\delta_n$ can be tracked online. A trained GRU is not
+contractive, so we compare a contraction penalty in training with a cell that contracts by construction,
+$s'=(1-a)\odot s+a\odot\tanh(W[s\|p\|x\|\phi]+b)$ with every row of the memory block of $W$ at $\ell_1$ norm at most $c$ and
+$a\ge a_{\min}$, so that $\rho=1-a_{\min}(1-c)$ for every input; \emph{$\delta$-certified repair} skips a change only while the
+bound stays below $\delta$.
+
+\textbf{Attacks.} We take user--item pairs that first meet in the test period: half (A) are observed and deleted at a request
+step, half (B) never happen. The weights were trained before the test period, so anything that separates A from B lives in
+the memory. \emph{Query access}: the model's link score, alone and in LiRA with 64 counterfactual shadow streams (random
+halves of the candidates observed and then deleted with the method under test; Gaussians with per-pair means). \emph{White-box
+access}: a probe on the memories and LiRA on their cosine. AUC 0.5 means the deleted pairs look like pairs that never
+happened.
+
+\textbf{Protocol and metrics.} Before step $j$ is scored, every policy turns the events it has received into a memory;
+policies share the weights, the negatives and a neighbour store ordered by occurrence time. \emph{Accuracy}: MRR of the true
+destination against 100 random and 100 historical negatives. \emph{Cost}: node updates as a multiple of normal in-order
+processing, and wall-clock time on a laptop CPU. \emph{Agreement}: top-1 predictions equal to exact repair.
+\emph{Privacy}: membership AUC.
+
+% =========================================================================================================
+\section{Results so far}
+\label{sec:results}
+
+\subsection{Exact repair: exact, and fast for recent edits}
+\label{sec:exact}
+
+\input{generated/tab_exact}
+
+Table~\ref{tab:exact}: over \ExTotalAll{} random insertions, deletions and amendments, the repaired memory equals a fresh
+sequential recomputation to within \ExMaxAll{} in float32 and bit for bit in float64; after a deletion the journal, too, is
+that of a memory that never saw the events (unit test). \ExNoEffectWiki\% of single edits on Wikipedia change no memory, because
+the event is not the latest of its nodes in its step. Among the others the cone is small on Wikipedia and Reddit but large
+on hub-heavy graphs (median \ExConeEffMooc\% of the later updates on MOOC), and it grows with the age of the edit. For edits
+that change a memory, repair with the step index is \BenchSpeedEffWiki$\times$ faster than replay on Wikipedia,
+\BenchSpeedEffReddit$\times$ on Reddit and \BenchSpeedEffReview$\times$ on tgbl-review, but \BenchSpeedEffLastfm$\times$ on
+LastFM and \BenchSpeedEffMooc$\times$ on MOOC; on windows of up to 500 steps, edits \AgeOldSteps{} or more steps old are
+repaired no faster than they are replayed (Fig.~\ref{fig:age} in the appendix). Repair is the tool for recent edits, replay
+for old ones; both are exact. DyRep's cones are far larger (median over all edits \DyrepConeWiki\% of the later updates on
+Wikipedia, against \ExConeWiki\% for TGN), because its update reads whole neighbourhoods.
+
+\subsection{Deleting from the log is not enough}
+\label{sec:del}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/deletion.pdf}
+\caption{Membership AUC after a deletion request (0.5: deleted pairs look like pairs that never happened). (a) Query access:
+the model's link score alone (hollow) and in the likelihood-ratio test (filled). (b) White-box access: a probe on the two
+memories (hollow) and the likelihood-ratio test on their cosine (filled). Mean $\pm$ std over seeds.}
+\label{fig:del}
+\end{figure}
+
+With query access alone, log-only deletion is exposed (Fig.~\ref{fig:del}a): the score by itself barely separates A from B
+(AUC \RawStoreWiki{} on Wikipedia), but LiRA on the same score reaches \LiraQStoreWiki{} on Wikipedia, \LiraQStoreReddit{} on
+Reddit and \LiraQStoreReview{} on tgbl-review, and the memories make it \LiraWStoreWiki, \LiraWStoreReddit{} and
+\LiraWStoreReview{} (b). On MOOC the score is at chance even before any deletion, yet LiRA reaches \LiraQStoreMooc. Resetting
+the memories and the learned restart fool the score but not LiRA (\LiraQResetWiki{} and \LiraQRestartWiki{} on Wikipedia),
+and the probe spots their regenerated memories (\DelProbeResetWiki{} and \DelProbeRestartWiki). The 1-hop rebuild costs about
+as much as exact repair and, like $\varepsilon$-repair, leaves a small residue (\LiraQKhopWiki{} and \LiraQEpsWiki). Exact
+repair is at chance by construction, at \DelExactCostWiki$\times$ the normal work up to the request on Wikipedia against
+\DelReplayCostWiki$\times$ for replay. JODIE and DyRep leak in the same way (LiRA \LiraQStoreJodieWiki{} and
+\DyrepLiraQStoreWiki{} on Wikipedia).
+
+\input{generated/tab_lira_robust}
+
+\textbf{How strong must the attacker be?} Table~\ref{tab:robust}: an attacker who knows none of the other test-period events
+still detects log-only deletion on Wikipedia and Reddit (\LiraKnowNoneQStoreWiki{} and \LiraKnowNoneQStoreReddit) and resets
+everywhere (\LiraKnowNoneQResetWiki--\LiraKnowNoneQResetReview); 50 steps after the request the leak is unchanged
+(\LiraAfterFiftyQStoreWiki{} on Wikipedia); with fewer candidate pairs unknown at once ($K=25$) log-only deletion is exposed
+with AUC \LiraKTwentyFiveQStoreWiki{} on Wikipedia and \LiraKTwentyFiveQStoreMooc{} on MOOC. The residues of
+$\varepsilon$-repair and the 1-hop rebuild are visible only to an attacker who knows almost every other event.
+
+\textbf{Training-period deletions.} When the weights saw the events too, we compare with retraining from scratch without them
+(Table~\ref{tab:traindel} in the appendix). \TrainDelText
+
+\subsection{Cheaper repair with a guarantee}
+\label{sec:cert}
+
+Standard TGNs are not contractive (local Jacobian norms sum to \ConVanillaJsum, median), so our bound does not apply to them.
+A contraction penalty makes \CertEightFive\% of the updates contract at $\rho=0.85$ for \MrrLossEightFive{} MRR points, but only
+at the states it measured. The contractive cell contracts for every input: its proven per-node bound held in all trials and
+was within \RigRatioNineCell$\times$ of the true worst error (median), and $\delta$-certified repair with $\delta=0.02$
+recomputes \CertRepairCostNineCell$\times$ the updates of exact repair while keeping every memory within 0.02 of the exact one;
+the price is \MrrLossNineCell{} MRR points at $\rho\le0.9$ on Wikipedia (Table~\ref{tab:cert} in the appendix).
+
+\subsection{Late events and SEC Form~4}
+\label{sec:late}
+
+Applying late events on arrival, out of order, changes MRR by \ArrivalRelWiki\%, \ArrivalRelReddit\% and \ArrivalRelMooc\% on
+Wikipedia, Reddit and MOOC relative to exact repair, within the spread over seeds; a one-hour buffer changes it by
+\BufOneRelWiki\%, \BufOneRelReddit\% and \BufOneRelMooc\%, because it holds back every recent event, not only the late ones
+(all delay models: Table~\ref{tab:delays}; all policies: Table~\ref{tab:late}, both in the appendix). On SEC Form~4, with
+real delays and amendments, every policy is within \SecSpreadPct\% of exact repair except dropping late events
+(\SecDropRel\%), while seeing every event on time would gain \SecOracleRel\%: what lateness costs is the information that
+has not arrived, which no repair recovers. Exact repair is not free in wall-clock time (\BenchStreamExactMsWiki{} ms per step
+of 200 Wikipedia events against \BenchStreamArrivalMsWiki{} ms in arrival order and \BenchStreamReplayMsWiki{} ms for replay),
+so for late events repair is a matter of correctness, not of accuracy.
+
+\subsection{Exact counterfactual explanations}
+\label{sec:infl}
+
+Deleting each of a user's last 20 events in turn and repairing gives the exact effect of every event on a prediction (up to
+200 predictions per model, 3 seeds; Fig.~\ref{fig:infl} in the appendix). About half of the influence (\MemChannelWiki\% on
+Wikipedia) flows through the memory, and \ShareOutsideWiki\% comes from events outside the 10 the attention layer sees. The
+most-attended event is the most influential one for the neighbour-list channel in \AttTopOneListWiki\% of the predictions
+on Wikipedia (chance 10\%), but for the total effect only in \AttTopOneTotalWiki\% (\AttTopOneTotalMooc\% on MOOC):
+attention only partly explains what it weighs, and not the prediction.
+
+% =========================================================================================================
+\section{Next steps (until December 10)}
+\label{sec:next}
+
+\begin{itemize}
+\item \textbf{Nov 11--24} (Lexi): the Medium blog post (motivation, the cone animation, PyG snippets, the deletion attack,
+  results), reviewed by the course staff before publishing; the Colab notebook as its companion (already runs end to end
+  with saved outputs).
+\item \textbf{Nov 11--24} (Yijin): a shadow-model attack on the weights for training-period deletions; GraphMixer or
+  DyGFormer as a stronger memory-free baseline; release of the SEC two-clock graph.
+\item \textbf{Nov 25--Dec 10} (both): figures and text polish, the public GitHub repository with every job list, and an
+  optional GPU version of the repair loop.
+\end{itemize}
+
+\section{Questions we would like feedback on}
+\label{sec:feedback}
+
+\begin{enumerate}
+\item Is the privacy finding (log-only deletion leaks through the memory; resets leave a fingerprint) the right main story for
+  the blog post, with exact repair as the fix and late events as a secondary result?
+\item Our strongest attacker knows the weights and the other events; weaker ones still find log-only deletion on Wikipedia
+  and Reddit. Which attacker would you consider realistic enough to put first?
+\item Exact repair beats replay only for recent edits. Is it acceptable to recommend replay for old edits (both are exact),
+  or should we invest in a faster (GPU) repair before the final?
+\item On SEC most insiders trade a single stock, so link prediction is easy (MRR of exact repair \SecExactMrr). Would a
+  node-level task be a better showcase for the real two-clock data?
+\end{enumerate}
+
+\paragraph{Code.} \url{\CodeURL}: the \texttt{lategraph} package, 18 unit tests (our kernel equals PyG's \texttt{TGNMemory};
+exact repair equals recomputation in float32 and float64; the step index equals the full walk bit for bit; the journal is
+purged), all experiment scripts with the job lists behind every number in this report, the JSON results, and a Colab notebook
+with saved outputs that trains a TGN, repairs a late event, runs the streaming evaluation, the deletion attack and the
+contractive cell, and redraws every result in about 20 minutes on a CPU.
+
+\bibliographystyle{abbrvnat}
+\small
+\bibliography{references}
+\normalsize
+
+\newpage
+\appendix
+
+\section{Training and evaluation details}
+\label{app:details}
+
+\textbf{Delay models.} \emph{Random}: 20\% of the test events are late, with a log-normal delay of median 2 hours ($\sigma=1$;
+tgbl-review: median 2 days); \emph{active}: the 5\% most active users send half of their events late; \emph{burst}: 4 outages
+of 3 hours, during each of which the events of a random half of the users are held; \emph{offline}: 20\% of the users upload
+their events every 6 hours; \emph{item shard}: 20\% of the items live on a slow shard and half of their events are late.
+
+\textbf{Attacks.} Deletion pairs: user--item pairs whose first interaction lies in the first half of the test period and whose
+user has at least three other events, at most 1{,}000 per group (\LiraPairsWiki{} on Wikipedia); the request is at the
+middle of the test period. LiRA: 64 shadow streams (16 for DyRep and tgbl-review). Weaker attackers: with knowledge $f$, a
+fixed random $1-f$ of the other test-period events is left out of every shadow stream; with a delay of $k$ steps, target and
+shadows process $k$ more steps before the attack; with $K<1{,}000$, fewer candidate pairs are drawn. The probe is a logistic
+regression on memory features trained with 5-fold cross-validation on the target's own labels.
+
+\textbf{Models.} Memory, time and embedding size 100, 10 neighbours, 2-head \texttt{TransformerConv}, batch 200, Adam
+$10^{-4}$, one random negative per positive, best epoch by validation AP (15 epochs; SEC 10; tgbl-review 6). The contraction
+penalty uses 64 sampled updates per batch and $\lambda=10$; the contractive cell uses $c=0.5$ and $a_{\min}=(1-\rho)/(1-c)$.
+
+\section{Why float32 broke our first exactness test}
+\label{app:fp}
+
+The time encoding is $\phi(\Delta t)=\cos(\omega\Delta t+b)$ with trained $|\omega|$ up to about 1 and $\Delta t$ in seconds,
+so $\omega\Delta t$ reaches $10^6$ for a gap of about 12 days, where adjacent float32 numbers are $0.0625$ apart.
+\texttt{torch.nn.Linear} uses a matrix--vector kernel when the batch has one row and a matrix--matrix kernel otherwise; the two
+round $\omega\Delta t+b$ differently, and the cosine turns a one-ulp difference into up to $0.06$. Exact repair recomputes
+small subsets of a step while the reference recomputes whole steps, so without padding \ExNoPadFail\% of the trials disagreed
+by more than $10^{-5}$. Padding single-row updates to two rows removes these errors; the remaining differences come from the
+summation order of batched kernels, and in float64 every repaired memory was bit-identical to the reference.
+
+\section{More results}
+\label{app:extra}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{figures/repair_age.pdf}
+\caption{Time of rollback + replay over the time of exact repair (step index) for single edits at random positions of the
+longest available test window, against the age of the edit; line: median over edits that change a memory.}
+\label{fig:age}
+\end{figure}
+
+\input{generated/tab_train_del}
+\input{generated/tab_cert}
+\input{generated/tab_late}
+\input{generated/tab_delays}
+\input{generated/tab_lira_know}
+\input{generated/tab_del_full}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{figures/influence.pdf}
+\caption{Left: mean absolute change of a prediction's score when one of the user's past events is deleted, by how recent the
+event is, through the memory and through the neighbour list. Right: share of the influence from events outside the 10 the
+attention layer sees, and how often the most-attended event is the most influential one (95\% bootstrap intervals).}
+\label{fig:infl}
+\end{figure}
+
+\end{document}

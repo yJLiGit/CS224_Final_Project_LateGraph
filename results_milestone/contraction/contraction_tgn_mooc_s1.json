@@ -1,0 +1,77 @@
+{
+ "config": {
+  "data": "mooc",
+  "model": "tgn_mooc_s1",
+  "bq": 200,
+  "trials": 100,
+  "steps": 60,
+  "seed": 0,
+  "threads": 2
+ },
+ "jacobian": {
+  "updates": 35109,
+  "J_own": {
+   "median": 1.3467719554901123,
+   "p90": 1.5518712997436523,
+   "p99": 1.6506754159927368,
+   "max": 1.7906235456466675
+  },
+  "J_partner": {
+   "median": 0.8129577040672302,
+   "p90": 1.3059971332550049,
+   "p99": 1.486693024635315,
+   "max": 1.738025426864624
+  },
+  "sum": {
+   "median": 2.2111611366271973,
+   "p90": 2.7771689891815186,
+   "p99": 2.962975263595581,
+   "max": 3.237438678741455
+  },
+  "certified_frac": 0.0
+ },
+ "certificate": {
+  "0.01": {
+   "trials": 100,
+   "max_err": 0.0919031873345375,
+   "median_err": 0.05292200669646263,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 4337925.150731618,
+   "p90_bound_over_err": 158112285898.74576,
+   "max_local_rho": 3.178081512451172,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 3.237438678741455,
+   "skipped_frac": 0.24406782315293632
+  },
+  "0.05": {
+   "trials": 100,
+   "max_err": 0.3504519760608673,
+   "median_err": 0.16557826846837997,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 682368.9864200287,
+   "p90_bound_over_err": 215724743103.76157,
+   "max_local_rho": 3.178081512451172,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 3.237438678741455,
+   "skipped_frac": 0.3457766474971007
+  },
+  "0.2": {
+   "trials": 100,
+   "max_err": 1.345663070678711,
+   "median_err": 0.21613743901252747,
+   "frac_bound_holds": 1.0,
+   "median_bound_over_err": 2503223.0272819195,
+   "p90_bound_over_err": 491510288207.5474,
+   "max_local_rho": 3.178081512451172,
+   "global_bound_valid": false,
+   "rho_max_all_updates": 3.237438678741455,
+   "skipped_frac": 0.4806001612766318
+  }
+ },
+ "wall_sec": 238.16510105133057,
+ "model_meta": {
+  "val_ap": 0.8548940167966206,
+  "lam": 0.0,
+  "rho": 0.9
+ }
+}
